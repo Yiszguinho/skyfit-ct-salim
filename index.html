@@ -1,0 +1,1383 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SkyFit CT Salim | Academia 24 horas no Tatuapé</title>
+<meta name="description" content="Academia de musculação 24 horas no Tatuapé, na Av. Salim Farah Maluf, 950. O primeiro CT SkyFit de São Paulo: 2.500 m² climatizados, máquinas Cimerian, cardio Fyretech, spinning Sky Race e professor a qualquer hora.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0D1326">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="SkyFit CT Salim | Academia 24 horas no Tatuapé">
+<meta property="og:description" content="O primeiro CT SkyFit de São Paulo: 2.500 m² climatizados, aberto 24 horas, todos os dias, inclusive feriados.">
+<meta property="og:image" content="https://yiszguinho.github.io/skyfit-ct-salim/img/og.jpg">
+<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="img/favicon-64.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;500;600;700&family=Onest:wght@400;500;600&display=swap">
+<link rel="preload" as="image" href="img/hero-360.webp" media="(min-width: 901px)" fetchpriority="high">
+<link rel="preload" as="image" imagesrcset="img/salao-v1-m.webp 720w, img/salao-v1.webp 1200w" imagesizes="100vw" media="(max-width: 900px)" fetchpriority="high">
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.min.js"}}</script>
+<script>
+(function () {
+  var h = document.documentElement, rm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  h.classList.add('js');
+  if (rm) h.classList.add('rm');
+  try { if (!rm && !sessionStorage.getItem('ctAbertura')) h.classList.add('abertura'); } catch (e) {}
+  // Rede de segurança: se o script principal não terminar, nada fica escondido
+  setTimeout(function () { if (!window.__animOK) h.classList.remove('js', 'abertura'); }, 4000);
+})();
+</script>
+<!-- Sem JavaScript, esconde os botões que dependem dele -->
+<noscript><style>.btn-menu, #ver-mapa, .voo-rota { display: none !important; }</style></noscript>
+<style>
+/* ============ Base ============ */
+/* Telas muito largas: degraus em %, que respeitam a fonte escolhida pela pessoa e crescem com o zoom */
+@media (min-width: 1921px) { html { font-size: 118.75%; } }
+@media (min-width: 2561px) { html { font-size: 150%; } }
+@media (min-width: 3201px) { html { font-size: 200%; } }
+:root {
+  --bg: #0D1326; --bg2: #0D1840; --azul: #14245A; --verm: #D8112E; --verm2: #FF3F3F;
+  --prata: #C9CFD8; --leg: #9AA3B5; --led: #F2F6FF; --preto: #05070D; --linha: rgba(242, 246, 255, .14);
+  --ft: 'Chakra Petch', 'Segoe UI', system-ui, sans-serif;
+  --fc: 'Onest', 'Segoe UI', system-ui, sans-serif;
+  /* A margem lateral nunca fica menor que a área segura (celular deitado com notch) */
+  --topo: 3.5rem; --pad: max(1.25rem, env(safe-area-inset-left, 0px), env(safe-area-inset-right, 0px)); --corte: .625rem;
+}
+@media (min-width: 901px) { :root { --topo: 4rem; --pad: max(clamp(2rem, 5vw, 4.5rem), env(safe-area-inset-left, 0px), env(safe-area-inset-right, 0px)); } }
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; background: var(--bg); scroll-padding-top: calc(var(--topo) + 12px); scrollbar-gutter: stable; }
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }
+body { margin: 0; background: var(--bg); color: var(--prata); font: 400 1.0625rem/1.6 var(--fc); overflow-x: clip; -webkit-font-smoothing: antialiased; }
+img, video, canvas { display: block; max-width: 100%; }
+img { height: auto; }
+a { color: inherit; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+h1, h2, h3 { margin: 0; font-family: var(--ft); font-weight: 600; color: var(--led); line-height: 1.02; text-transform: uppercase; letter-spacing: .005em; }
+h2 { font-size: clamp(2rem, 5.4vw, 3.75rem); text-wrap: balance; }
+h3 { font-size: 1.375rem; }
+p { margin: 0; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+:focus-visible { outline: 2px solid var(--led); outline-offset: 3px; }
+[tabindex="-1"]:focus { outline: none; }
+.pular { position: absolute; left: -999px; top: .5rem; z-index: 200; background: var(--led); color: var(--bg); padding: .7rem 1rem; font-weight: 600; }
+.pular:focus { left: .5rem; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.wrap { max-width: 82rem; margin: 0 auto; }
+.sec { position: relative; padding: clamp(4.5rem, 11vw, 9rem) var(--pad); }
+.rotulo { display: flex; align-items: center; gap: .7em; font: 600 .8125rem/1.2 var(--ft); letter-spacing: .16em; text-transform: uppercase; color: var(--verm2); margin-bottom: 1rem; }
+.rotulo::before { content: ""; width: 1.8em; height: 1px; background: currentColor; flex: none; }
+.lead { margin-top: 1.1rem; max-width: 40rem; font-size: 1.125rem; }
+
+/* Números de LED: primeiro o contorno (a fita apagada), depois acesos */
+.num { font-family: var(--ft); font-weight: 300; line-height: .86; letter-spacing: -.01em; color: var(--led); -webkit-text-stroke: 1px transparent; font-variant-numeric: tabular-nums; transition: color 1s ease, -webkit-text-stroke-color 1s ease; }
+.js:not(.rm) .num:not(.aceso) { color: transparent; -webkit-text-stroke-color: rgba(242, 246, 255, .55); }
+
+/* Botões com as quinas cortadas, como as letras do CT */
+.btn { --c: var(--verm); display: inline-flex; align-items: center; justify-content: center; gap: .6em; min-height: 3rem; padding: .85rem 1.35rem; font: 600 .9375rem/1.1 var(--ft); letter-spacing: .06em; text-transform: uppercase; text-decoration: none; color: #fff; background: var(--c); clip-path: polygon(var(--corte) 0, 100% 0, 100% calc(100% - var(--corte)), calc(100% - var(--corte)) 100%, 0 100%, 0 var(--corte)); transition: background-color .2s ease; }
+.btn:hover { --c: #EE1C3A; }
+.btn:focus-visible { outline: none; box-shadow: inset 0 0 0 2px #fff; }
+.btn-l { --c: rgba(242, 246, 255, .1); color: var(--led); }
+.btn-l:hover { --c: rgba(242, 246, 255, .2); }
+.btn svg { width: 1.25em; height: 1.25em; flex: none; }
+.link { color: var(--led); text-decoration: underline; text-underline-offset: .2em; text-decoration-color: rgba(242, 246, 255, .4); }
+.link:hover { text-decoration-color: var(--led); }
+
+/* Janelas (fotos e vídeos verticais) com "luz primeiro" */
+.janela { position: relative; overflow: hidden; background: var(--preto); border: 1px solid rgba(242, 246, 255, .14); }
+.janela > img, .janela > video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.luz-camada { opacity: 0; mix-blend-mode: screen; pointer-events: none; }
+.js:not(.rm) .luz:not(.acesa) > .luz-base { opacity: 0; }
+.play { position: absolute; inset: 0; z-index: 2; display: none; place-items: center; align-content: center; gap: .8rem; background: rgba(5, 7, 13, .35); }
+.play b { font: 600 .8125rem/1 var(--ft); letter-spacing: .14em; text-transform: uppercase; color: var(--led); text-shadow: 0 1px 6px rgba(0, 0, 0, .8); }
+.play span { display: grid; place-items: center; width: 4rem; height: 4rem; background: rgba(5, 7, 13, .75); border: 1px solid rgba(242, 246, 255, .5); }
+.play svg { width: 1.4rem; height: 1.4rem; color: var(--led); margin-left: .2rem; }
+.parado .play { display: grid; }
+/* O botão cobre a janela inteira e a moldura corta o contorno de fora: o foco aparece no quadrado do meio */
+.play:focus-visible { outline: none; }
+.play:focus-visible span { outline: 2px solid var(--led); outline-offset: 3px; }
+/* Pausa: aparece enquanto o vídeo toca (todo vídeo em loop precisa de um jeito de parar) */
+.pausa { position: absolute; top: .6rem; right: .6rem; z-index: 3; display: none; place-items: center; width: 2.75rem; height: 2.75rem; color: var(--led); background: rgba(5, 7, 13, .6); border: 1px solid rgba(242, 246, 255, .35); }
+.pausa svg { width: 1.1rem; height: 1.1rem; }
+.tocando:not(.parado) .pausa { display: grid; }
+
+/* Entradas suaves (só com JS e sem movimento reduzido) */
+.js:not(.rm) .rv { opacity: 0; transform: translateY(18px); }
+
+/* ============ Topo ============ */
+.topo { position: fixed; inset: 0 0 auto; z-index: 50; height: calc(var(--topo) + env(safe-area-inset-top)); padding: env(safe-area-inset-top) max(var(--pad), env(safe-area-inset-right)) 0 max(var(--pad), env(safe-area-inset-left)); display: flex; align-items: center; gap: .75rem; background: rgba(13, 19, 38, .9); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-bottom: 1px solid var(--linha); }
+.topo::before { content: ""; position: absolute; inset: 0; background: url(img/final-teto-luz.webp) center 46% / cover; opacity: .16; pointer-events: none; }
+.marca { position: relative; display: flex; align-items: center; gap: .65rem; margin-right: auto; text-decoration: none; min-height: 2.75rem; }
+.marca img { width: auto; height: 2.35rem; }
+.marca span { display: none; font: 600 1rem/1 var(--ft); color: var(--led); text-transform: uppercase; letter-spacing: .05em; white-space: nowrap; }
+.nav { display: none; position: relative; }
+.selo24 { position: relative; display: inline-flex; align-items: center; gap: .45rem; font: 600 .8125rem/1 var(--ft); letter-spacing: .1em; text-transform: uppercase; color: var(--led); white-space: nowrap; }
+.selo24 i { width: .4rem; height: .4rem; background: var(--led); box-shadow: 0 0 .5rem rgba(242, 246, 255, .7); }
+.selo24 .d { display: none; }
+.topo .btn { position: relative; min-height: 2.75rem; padding: .55rem .85rem; font-size: .8125rem; --corte: .5rem; }
+.btn-menu { position: relative; display: inline-flex; align-items: center; justify-content: center; gap: .45rem; min-width: 2.75rem; min-height: 2.75rem; font: 600 .8125rem/1 var(--ft); letter-spacing: .08em; text-transform: uppercase; color: var(--led); }
+.btn-menu svg { width: 1.35rem; height: 1.35rem; }
+.btn-menu .t { display: none; }
+@media (min-width: 380px) { .btn-menu .t { display: inline; } }
+@media (min-width: 640px) { .marca span { display: inline; } .selo24 .d { display: inline; } }
+@media (min-width: 901px) {
+  .topo { gap: 1.5rem; }
+  .marca { margin-right: 0; }
+  .nav { display: flex; gap: clamp(1rem, 2vw, 1.75rem); margin: 0 auto; }
+  .nav a { padding: .6rem 0; font: 500 .875rem/1 var(--ft); letter-spacing: .08em; text-transform: uppercase; text-decoration: none; color: var(--prata); border-bottom: 1px solid transparent; transition: color .2s, border-color .2s; }
+  .nav a:hover, .nav a.ativo { color: var(--led); border-color: var(--led); }
+  .btn-menu { display: none; }
+  .topo .btn { padding: .6rem 1.1rem; }
+}
+@media (min-width: 901px) and (max-width: 1180px) {
+  .marca span, .selo24 .d { display: none; }
+  .nav { gap: 1rem; }
+  .nav a { font-size: .8125rem; letter-spacing: .05em; }
+}
+
+/* Menu do celular: lâmina que desce do topo */
+.menu { position: fixed; inset: 0; z-index: 60; visibility: hidden; pointer-events: none; transition: visibility 0s .45s; }
+.menu.aberto { visibility: visible; pointer-events: auto; transition: none; }
+.menu-fundo { position: absolute; inset: 0; background: rgba(5, 7, 13, .65); opacity: 0; transition: opacity .35s ease; }
+.menu.aberto .menu-fundo { opacity: 1; }
+.menu-lamina { position: absolute; inset: 0 0 auto; max-height: 100svh; overflow-y: auto; overscroll-behavior: contain; padding: calc(env(safe-area-inset-top) + .5rem) var(--pad) calc(1.5rem + env(safe-area-inset-bottom)); background: linear-gradient(rgba(13, 19, 38, .9), rgba(13, 19, 38, .97)), url(img/final-teto-luz.webp) center / cover, var(--bg); border-bottom: 1px solid var(--linha); transform: translateY(-102%); transition: transform .45s cubic-bezier(.2, .8, .2, 1); }
+.menu.aberto .menu-lamina { transform: none; }
+.menu-cab { display: flex; align-items: center; justify-content: space-between; height: var(--topo); }
+.menu-cab span { font: 600 .8125rem/1 var(--ft); letter-spacing: .16em; text-transform: uppercase; color: var(--leg); }
+.menu-x { display: grid; place-items: center; width: 2.75rem; height: 2.75rem; color: var(--led); }
+.menu-x svg { width: 1.4rem; height: 1.4rem; }
+.menu nav a { display: flex; align-items: center; justify-content: space-between; min-height: 3.5rem; border-bottom: 1px solid var(--linha); font: 600 1.25rem/1 var(--ft); text-transform: uppercase; letter-spacing: .04em; color: var(--led); text-decoration: none; }
+.menu nav a::after { content: ""; width: .55rem; height: .55rem; border-top: 1.5px solid var(--leg); border-right: 1.5px solid var(--leg); transform: rotate(45deg); }
+.menu-acoes { display: grid; gap: .75rem; margin-top: 1.5rem; }
+.menu-acoes .btn { width: 100%; }
+
+/* ============ Hero ============ */
+/* Uma tela de altura no mínimo; se o texto não couber (celular baixo), o topo cresce em vez de cortar */
+.hero { position: relative; display: flex; flex-direction: column; min-height: 100vh; min-height: max(100svh, 34rem); overflow: hidden; background: var(--preto); isolation: isolate; }
+.hero-midia { position: absolute; inset: 0; z-index: -2; overflow: hidden; }
+.hero-midia > * { position: absolute; inset: 0; width: 100%; height: 100%; }
+.hero-midia img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 42%; }
+.hero-luz { opacity: 0; mix-blend-mode: screen; }
+.hero-3d { display: none; }
+.hero-sombra { position: absolute; inset: 0; z-index: -1; pointer-events: none; background: linear-gradient(0deg, var(--bg) 0%, rgba(13, 19, 38, .9) 36%, rgba(13, 19, 38, .2) 64%, rgba(13, 19, 38, .5) 100%); }
+.hero-txt { display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start; flex: 1 0 auto; padding: calc(var(--topo) + env(safe-area-inset-top) + 1rem) var(--pad) calc(1.5rem + env(safe-area-inset-bottom)); pointer-events: none; }
+.hero-txt a, .hero-txt button { pointer-events: auto; }
+.hero-logo { width: auto; height: 4.25rem; margin-bottom: .9rem; filter: drop-shadow(0 .4rem 1.2rem rgba(0, 0, 0, .45)); }
+.hero h1 { font-weight: 700; font-size: clamp(2.5rem, calc((100vw - 2.5rem) / 5.3), 7.5rem); line-height: .9; letter-spacing: 0; }
+.hero h1 span { display: block; }
+.hero-linha { margin-top: .85rem; font: 600 clamp(1.05rem, 4.6vw, 1.5rem)/1.2 var(--ft); color: var(--led); text-transform: uppercase; letter-spacing: .03em; }
+.hero-sub { margin-top: .45rem; max-width: 32rem; color: var(--prata); }
+.hero-acoes { display: flex; flex-wrap: wrap; gap: .65rem; margin-top: 1.25rem; }
+.hero-fatos { display: flex; flex-direction: column; gap: .3rem; margin-top: 1rem; font-size: .875rem; color: var(--leg); }
+.hero-fatos b { color: var(--led); font-weight: 600; }
+.hero-olhar { display: none; }
+@media (min-width: 901px) {
+  .hero { min-height: max(100svh, 38rem); }
+  /* Só dá para arrastar (e só aparece a dica) com o 3D ligado de verdade */
+  .hero-3d { display: block; opacity: 0; transition: opacity .9s ease; pointer-events: none; touch-action: pan-y; }
+  .hero-3d.on { opacity: 1; pointer-events: auto; cursor: grab; }
+  .hero-3d.arrastando { cursor: grabbing; }
+  .hero-sombra { background: linear-gradient(90deg, rgba(8, 11, 24, .94) 0%, rgba(8, 11, 24, .78) 30%, rgba(8, 11, 24, .18) 58%, rgba(8, 11, 24, 0) 76%), linear-gradient(0deg, var(--bg) 0%, rgba(13, 19, 38, 0) 18%); }
+  .hero-txt { justify-content: center; max-width: 48rem; padding-bottom: 3.5rem; }
+  .hero-logo { height: clamp(4.75rem, 12vh, 8rem); }
+  .hero h1 { font-size: clamp(3rem, min(6.3vw, 10.5vh), 7.5rem); }
+  .hero-linha { font-size: clamp(1.15rem, min(1.7vw, 3.2vh), 1.6rem); }
+  .hero-fatos { flex-direction: row; flex-wrap: wrap; gap: .4rem 1.5rem; }
+  .hero-olhar { position: absolute; right: var(--pad); bottom: 2.25rem; z-index: 2; display: flex; align-items: center; gap: 1rem; }
+  .hero-olhar p { display: none; align-items: center; gap: .55rem; font: 500 .8125rem/1 var(--ft); letter-spacing: .1em; text-transform: uppercase; color: var(--prata); }
+  .hero:has(.hero-3d.on) .hero-olhar p { display: flex; }
+  .hero-olhar p svg { width: 1.5rem; height: 1.5rem; }
+}
+.abertura .hero-foto, .abertura .hero-luz, .abertura .hero-txt > *, .abertura .hero-olhar { opacity: 0; }
+html:not(.webgl) [data-tour] { display: none !important; }
+
+/* ============ 3 estrelas no brasão ============ */
+.estrelas { padding: clamp(3rem, 7vw, 5rem) var(--pad); background: var(--bg2); border-top: 1px solid var(--linha); border-bottom: 1px solid var(--linha); }
+.estrelas ol { display: grid; gap: 1.6rem; }
+.estrelas li { display: grid; grid-template-columns: 2.75rem 1fr; gap: .15rem 1rem; align-items: center; }
+.estrelas svg { grid-row: span 2; width: 2.75rem; height: 2.75rem; color: var(--led); transition: opacity .7s ease, filter .7s ease; filter: drop-shadow(0 0 .6rem rgba(242, 246, 255, .55)); }
+.estrelas strong { font: 600 clamp(1.4rem, 2.6vw, 2rem)/1.05 var(--ft); color: var(--led); text-transform: uppercase; }
+.estrelas span { color: var(--leg); }
+.js:not(.rm) .estrelas li:not(.acesa) svg { opacity: .16; filter: none; }
+@media (min-width: 901px) { .estrelas ol { grid-template-columns: repeat(3, 1fr); gap: 2.5rem; } }
+
+/* ============ Estrutura: entre voando ============ */
+.voo { position: relative; background: var(--bg); padding: clamp(4.5rem, 11vw, 8rem) var(--pad) clamp(3rem, 7vw, 5rem); }
+.voo-palco { display: grid; gap: 1.75rem; max-width: 82rem; margin: 0 auto; }
+.voo-esq { display: none; }
+/* Largura mínima de 13,5rem: abaixo disso os 4 nomes da rota não cabem (celular deitado) */
+.voo-janela { position: relative; width: min(100%, max(13.5rem, calc(76svh * 9 / 16))); aspect-ratio: 9 / 16; margin: 0 auto; background: var(--preto); border: 1px solid rgba(242, 246, 255, .16); overflow: hidden; }
+.voo-janela video, .voo-janela canvas { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.voo-janela canvas { display: none; }
+.voo-dica { display: none; }
+.voo-rota { position: absolute; inset: auto 0 0; z-index: 3; display: grid; grid-template-columns: repeat(4, 1fr); padding: 2.5rem .5rem .35rem; background: linear-gradient(rgba(5, 7, 13, 0), rgba(5, 7, 13, .88)); }
+.voo-rota button { position: relative; min-height: 2.75rem; padding: .5rem .2rem .2rem; font: 600 .6875rem/1.1 var(--ft); letter-spacing: .08em; text-transform: uppercase; color: var(--leg); text-align: left; }
+.voo-rota button::before { content: ""; position: absolute; left: .2rem; right: .35rem; top: 0; height: 2px; background: rgba(242, 246, 255, .25); }
+.voo-rota button i { position: absolute; left: .2rem; top: 0; height: 2px; width: calc(100% - .55rem); background: var(--verm2); transform-origin: 0 50%; transform: scaleX(0); }
+.voo-rota button[aria-current="true"] { color: var(--led); }
+/* Com os controles do navegador (movimento reduzido, economia de dados), a rota sobe para não cobrir a barra do vídeo */
+.voo:not(.voo--scrub) .voo-janela:has(> video[controls]) .voo-rota { inset: 0 0 auto; padding: .35rem .5rem 2.5rem; background: linear-gradient(rgba(5, 7, 13, .88), rgba(5, 7, 13, 0)); }
+.voo-janela:has(> video[controls]) .pausa { display: none; }
+.voo-paradas { counter-reset: p; }
+.parada { padding: 1.1rem 0 1.2rem 1rem; border-left: 2px solid var(--linha); transition: border-color .4s ease, opacity .4s ease; }
+.parada + .parada { margin-top: .5rem; }
+.parada.ativa { border-left-color: var(--verm2); }
+.parada-dado { display: block; font: 600 .8125rem/1.2 var(--ft); letter-spacing: .12em; text-transform: uppercase; color: var(--verm2); margin-bottom: .45rem; }
+.parada h3 { font-size: 1.375rem; margin-bottom: .4rem; }
+.voo-sub { margin-top: .9rem; max-width: 32rem; }
+@media (max-width: 900px) {
+  /* No celular: título, depois o vídeo, depois as paradas sincronizadas com ele */
+  .voo-palco { display: flex; flex-direction: column; gap: 0; }
+  .voo-dir { display: contents; }
+  .voo-dir .rotulo { order: 1; }
+  .voo-dir h2 { order: 2; }
+  .voo-sub { order: 3; }
+  .voo-janela { order: 4; margin-top: 1.75rem; }
+  .voo-paradas { order: 5; margin-top: 1.75rem; }
+}
+@media (min-width: 901px) {
+  /* Sem o voo pela rolagem (movimento reduzido ou sem GSAP): vídeo numa coluna de largura fixa e texto ao lado.
+     A largura vem da coluna: a janela só tem filhos absolutos e encolheria para 2 px numa coluna "auto" */
+  .voo-palco { grid-template-columns: min(26rem, calc((100vh - var(--topo) - 3rem) * 9 / 16)) minmax(0, 1fr); align-items: center; gap: clamp(2rem, 5vw, 4.5rem); }
+  .voo-janela { width: 100%; grid-row: span 2; }
+  .voo--scrub { padding: 0; }
+  .voo--scrub .voo-palco { height: 100vh; max-width: none; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); padding: calc(var(--topo) + 1.5rem) var(--pad) 1.5rem; gap: clamp(1.5rem, 4vw, 4rem); }
+  .voo--scrub .voo-esq { display: block; justify-self: end; text-align: right; }
+  /* A altura também respeita a largura (60vw): em tablet em pé ou janela alta, sobra espaço dos lados para o título e os números */
+  .voo--scrub .voo-janela { grid-row: auto; height: min(calc(100vh - var(--topo) - 3rem), 62rem, 60vw); width: auto; margin: 0; }
+  .voo--scrub .voo-janela canvas { display: block; }
+  .voo--scrub .voo-janela video, .voo--scrub .play, .voo--scrub .pausa { display: none; }
+  /* Fundo escuro atrás da dica: o primeiro quadro do voo é céu claro */
+  .voo--scrub .voo-dica { position: absolute; top: 1.1rem; left: 50%; z-index: 3; display: flex; align-items: center; gap: .5rem; padding: .45rem .8rem; white-space: nowrap; font: 600 .75rem/1 var(--ft); letter-spacing: .14em; text-transform: uppercase; color: var(--led); background: rgba(5, 7, 13, .78); border: 1px solid rgba(242, 246, 255, .18); transform: translateX(-50%); transition: opacity .4s ease; }
+  .voo--scrub .voo-dica svg { width: 1rem; height: 1rem; }
+  .voo--scrub .voo-dir { align-self: center; }
+  .voo--scrub .voo-paradas { display: grid; margin-top: 2rem; }
+  .voo--scrub .parada { grid-area: 1 / 1; opacity: 0; visibility: hidden; border-left-color: var(--verm2); transition: opacity .45s ease, visibility 0s .45s; margin: 0; }
+  .voo--scrub .parada.ativa { opacity: 1; visibility: visible; transition: opacity .45s ease .1s, visibility 0s; }
+  .voo--scrub .parada-dado { display: none; }
+  .vn { display: grid; grid-template-areas: "x"; }
+  .vn > div { grid-area: x; opacity: 0; transform: translateY(1.2rem); transition: opacity .5s ease, transform .6s cubic-bezier(.2, .8, .2, 1); }
+  .vn > div.ativa { opacity: 1; transform: none; }
+  .vn .num { font-size: min(7.6vw, 13vh); display: block; }
+  .vn small { display: block; margin-top: .9rem; font: 600 .875rem/1.3 var(--ft); letter-spacing: .12em; text-transform: uppercase; color: var(--leg); }
+}
+
+/* Também no CT */
+.mais { padding-top: clamp(1.5rem, 5vw, 4.5rem); }
+.mais-in { display: grid; gap: 2rem; }
+.mais .janela { aspect-ratio: 4 / 5; }
+.checks { display: grid; gap: .1rem; margin: 1.5rem 0 2rem; }
+.checks li { position: relative; padding: .85rem 0 .85rem 2rem; border-bottom: 1px solid var(--linha); }
+.checks li::before { content: ""; position: absolute; left: .2rem; top: 1.25rem; width: .8rem; height: .45rem; border-left: 2px solid var(--verm2); border-bottom: 2px solid var(--verm2); transform: rotate(-45deg); }
+.checks b { color: var(--led); font-weight: 600; }
+@media (min-width: 901px) { .mais-in { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); align-items: center; gap: clamp(2.5rem, 6vw, 6rem); } .mais .janela { max-width: 30rem; } }
+
+/* ============ Modalidades ============ */
+.mod { background: var(--bg2); border-top: 1px solid var(--linha); }
+.mod-trilho { display: grid; grid-auto-flow: column; grid-auto-columns: 78%; gap: .9rem; overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain; margin: 2.25rem calc(var(--pad) * -1) 0; padding: 0 var(--pad) 1rem; scroll-padding-left: var(--pad); scrollbar-width: none; }
+.mod-trilho::-webkit-scrollbar { display: none; }
+.mod-card { scroll-snap-align: start; }
+.mod-card .janela { aspect-ratio: 4 / 5; }
+.mod-card h3 { margin-top: 1rem; }
+.mod-card p { margin-top: .4rem; }
+.mod-tag { position: absolute; left: 1rem; bottom: .9rem; z-index: 2; pointer-events: none; }
+.mod-tag .num { font-size: clamp(3.5rem, 15vw, 5rem); text-shadow: 0 .2rem 1.5rem rgba(0, 0, 0, .6); }
+.arraste { display: flex; align-items: center; gap: .5rem; margin-top: .25rem; font: 600 .75rem/1 var(--ft); letter-spacing: .14em; text-transform: uppercase; color: var(--leg); }
+.arraste svg { width: 1.1rem; height: 1.1rem; }
+.mod-mais { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 2rem; }
+.mod-mais li { padding: .6rem .9rem; font: 500 .875rem/1.2 var(--ft); letter-spacing: .04em; text-transform: uppercase; color: var(--led); background: rgba(242, 246, 255, .07); border: 1px solid var(--linha); }
+@media (min-width: 901px) {
+  .mod-trilho { grid-auto-flow: row; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(1rem, 2vw, 1.75rem); overflow: visible; margin: 3rem 0 0; padding: 0; }
+  .mod-tag .num { font-size: clamp(3.5rem, 5vw, 5.5rem); }
+  .arraste { display: none; }
+}
+
+/* ============ Aberto 24 horas ============ */
+.h24 { background: var(--preto); overflow: hidden; }
+.h24-in { display: grid; gap: 2rem; max-width: 82rem; margin: 0 auto; }
+.h24-num .num { font-size: clamp(7rem, 38vw, 17rem); }
+.h24 .janela { width: min(100%, 24rem); aspect-ratio: 9 / 16; }
+.h24-txt p + p { margin-top: 1rem; }
+@media (min-width: 901px) {
+  .h24-in { grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: clamp(2rem, 5vw, 5rem); }
+  .h24-num { justify-self: end; }
+  .h24-num .num { font-size: min(12vw, 21vh); }
+  .h24 .janela { width: auto; height: min(78vh, 46rem); }
+}
+
+/* ============ Além do treino ============ */
+.alem-grade { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; margin-top: 2.5rem; }
+.alem-card { position: relative; display: flex; flex-direction: column; justify-content: flex-end; aspect-ratio: 4 / 5; padding: 1rem; overflow: hidden; background: var(--bg2); border: 1px solid var(--linha); isolation: isolate; }
+.alem-card .janela { position: absolute; inset: 0; z-index: -2; border: 0; }
+.alem-card::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(0deg, rgba(5, 7, 13, .92) 0%, rgba(5, 7, 13, .35) 45%, rgba(5, 7, 13, 0) 70%); }
+.alem-card h3 { font-size: clamp(.9375rem, 4.4vw, 1.0625rem); }
+.alem-card p { margin-top: .3rem; font-size: .875rem; line-height: 1.45; }
+.alem-card.txt { grid-column: span 2; aspect-ratio: auto; overflow: visible; justify-content: flex-start; padding: 1.5rem; background: linear-gradient(160deg, var(--azul), var(--bg2) 70%); }
+.alem-card.txt::after { display: none; }
+.alem-card.txt .num { font-size: clamp(3.5rem, 14vw, 5.5rem); margin-bottom: 1rem; }
+.alem-card.txt h3 { font-size: 1.375rem; }
+.alem-card.txt p { font-size: 1rem; line-height: 1.55; }
+.alem-card.txt .btn { margin-top: 1.1rem; align-self: flex-start; }
+@media (min-width: 901px) {
+  .alem-grade { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+  /* Altura igual na linha; o card de texto pode crescer sem cortar o conteúdo */
+  .alem-card { aspect-ratio: auto; min-height: clamp(22rem, 34vw, 32rem); padding: 1.4rem; }
+  .alem-card h3 { font-size: 1.375rem; }
+  .alem-card p { font-size: .9375rem; }
+  .alem-card.txt { grid-column: auto; justify-content: flex-end; padding: 1.75rem; }
+  .alem-card.txt .num { font-size: clamp(3.5rem, 5vw, 5.5rem); margin-bottom: auto; }
+}
+
+/* ============ Avaliações ============ */
+.aval { background: var(--bg2); border-top: 1px solid var(--linha); }
+.aval-cab { display: grid; gap: 1.25rem; align-items: end; }
+.aval-num .num { font-size: clamp(7rem, 34vw, 14rem); }
+.estrelas5 { display: flex; gap: .3rem; color: var(--led); margin-bottom: .8rem; }
+.estrelas5 svg { width: 1.4rem; height: 1.4rem; }
+.aval-lista { display: grid; gap: 1rem; margin-top: 2.5rem; }
+.aval blockquote { margin: 0; padding: 1.5rem; background: rgba(5, 7, 13, .35); border-left: 2px solid var(--verm2); display: flex; flex-direction: column; gap: 1rem; }
+.aval blockquote p { color: var(--led); }
+.aval cite { font: 600 .8125rem/1.3 var(--ft); font-style: normal; letter-spacing: .1em; text-transform: uppercase; color: var(--leg); margin-top: auto; }
+.aval-rodape { margin-top: 1.75rem; }
+@media (min-width: 901px) { .aval-cab { grid-template-columns: auto minmax(0, 1fr); gap: 3.5rem; } .aval-lista { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+
+/* ============ Planos ============ */
+.planos-grade { display: grid; gap: 1rem; margin-top: 2.5rem; }
+.plano { position: relative; display: flex; flex-direction: column; gap: .8rem; padding: 1.75rem 1.5rem; background: var(--bg2); border: 1px solid var(--linha); }
+.plano.destaque { border-color: rgba(255, 63, 63, .45); background: linear-gradient(180deg, rgba(216, 17, 46, .16), var(--bg2) 45%); }
+.plano.destaque::before { content: ""; position: absolute; inset: -1px -1px auto; height: 3px; background: var(--verm); }
+.plano-tag { font: 600 .75rem/1 var(--ft); letter-spacing: .16em; text-transform: uppercase; color: var(--verm2); min-height: .75rem; }
+.plano h3 { font-size: 1.625rem; }
+.preco { font: 300 clamp(3.25rem, 12vw, 4.5rem)/1 var(--ft); color: var(--led); letter-spacing: -.01em; white-space: nowrap; }
+.preco small { font-size: .32em; font-weight: 500; color: var(--prata); letter-spacing: .04em; }
+.plano p.desc { min-height: 3.2em; }
+.plano .btn { margin-top: auto; }
+.planos-mais { display: grid; gap: .1rem; margin-top: 2rem; }
+.planos-mais li { padding: .9rem 0; border-bottom: 1px solid var(--linha); }
+.planos-mais b { color: var(--led); font-weight: 600; }
+.planos-duvida { margin-top: 1.75rem; display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; }
+@media (min-width: 901px) {
+  .planos-grade { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
+  .plano { padding: 2.25rem 2rem; }
+  .preco { font-size: clamp(3.25rem, 4.6vw, 4.75rem); }
+  .planos-mais { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 2rem; }
+}
+
+/* ============ Como chegar ============ */
+.chegar-in { display: grid; gap: 2rem; }
+.chegar .janela { aspect-ratio: 1072 / 851; }
+.chegar address { font-style: normal; margin-top: .4rem; }
+.chegar .checks { margin: 1.5rem 0; }
+.chegar-acoes { display: flex; flex-wrap: wrap; gap: .65rem; }
+.mapa { margin-top: 1.25rem; border: 1px solid var(--linha); }
+.mapa iframe { display: block; width: 100%; height: 20rem; border: 0; }
+@media (min-width: 901px) { .chegar-in { grid-template-columns: minmax(0, 11fr) minmax(0, 10fr); align-items: center; gap: clamp(2.5rem, 6vw, 5.5rem); } }
+
+/* ============ Final ============ */
+.final { position: relative; min-height: 86svh; display: grid; place-items: center; text-align: center; overflow: hidden; isolation: isolate; padding: clamp(5rem, 12vw, 9rem) var(--pad); }
+.final .janela { position: absolute; inset: 0; z-index: -2; border: 0; }
+.final::after { content: ""; position: absolute; inset: 0; z-index: -1; background: radial-gradient(ellipse at 50% 55%, rgba(13, 19, 38, .55), rgba(13, 19, 38, .92) 70%), linear-gradient(0deg, var(--bg), rgba(13, 19, 38, 0) 30%); }
+.final img.logo { width: auto; height: clamp(5rem, 14vw, 8rem); margin: 0 auto 1.5rem; }
+.final h2 { max-width: 16ch; margin: 0 auto; font-size: clamp(2.2rem, 6.4vw, 4.75rem); }
+.final p { margin: 1.1rem auto 0; max-width: 34rem; }
+.final .btn { margin-top: 1.75rem; }
+
+/* ============ Rodapé ============ */
+.rodape { display: grid; gap: 2rem; padding: 3rem var(--pad) calc(2.5rem + env(safe-area-inset-bottom)); border-top: 1px solid var(--linha); font-size: .9375rem; color: var(--leg); }
+.rodape strong { color: var(--led); font-family: var(--ft); font-weight: 600; text-transform: uppercase; letter-spacing: .04em; }
+.rodape img.logo { width: auto; height: 3.25rem; margin-bottom: 1rem; }
+.rodape a { color: var(--prata); }
+.rodape .rede img { width: 9rem; height: auto; margin-bottom: .6rem; }
+@media (min-width: 901px) { .rodape { grid-template-columns: 1.3fr 1fr 1fr; align-items: start; } }
+
+/* ============ Tour 360° ============ */
+.tour { position: fixed; inset: 0; z-index: 80; background: var(--preto); visibility: hidden; opacity: 0; transition: opacity .35s ease, visibility 0s .35s; }
+.tour.aberto { visibility: visible; opacity: 1; transition: opacity .35s ease; }
+.tour canvas { position: absolute; inset: 0; width: 100%; height: 100%; touch-action: none; cursor: grab; }
+.tour canvas.arrastando { cursor: grabbing; }
+.tour-cab { position: absolute; inset: 0 0 auto; z-index: 2; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: calc(env(safe-area-inset-top) + .75rem) var(--pad) 2rem; background: linear-gradient(rgba(5, 7, 13, .85), rgba(5, 7, 13, 0)); pointer-events: none; }
+.tour-cab h2 { font-size: clamp(1.1rem, 3vw, 1.5rem); }
+.tour-cab p { font-size: .875rem; color: var(--prata); margin-top: .25rem; }
+.tour-x { pointer-events: auto; display: grid; place-items: center; width: 3rem; height: 3rem; flex: none; background: rgba(5, 7, 13, .6); border: 1px solid rgba(242, 246, 255, .3); color: var(--led); }
+.tour-x svg { width: 1.4rem; height: 1.4rem; }
+.tour-chips { position: absolute; inset: auto 0 0; z-index: 2; display: flex; gap: .5rem; overflow-x: auto; padding: 2rem var(--pad) calc(1rem + env(safe-area-inset-bottom)); background: linear-gradient(rgba(5, 7, 13, 0), rgba(5, 7, 13, .9)); scrollbar-width: none; }
+.tour-chips::-webkit-scrollbar { display: none; }
+.tour-chips button { flex: none; min-height: 2.75rem; padding: .6rem 1rem; font: 600 .8125rem/1 var(--ft); letter-spacing: .06em; text-transform: uppercase; color: var(--led); background: rgba(5, 7, 13, .55); border: 1px solid rgba(242, 246, 255, .3); }
+.tour-chips button[aria-pressed="true"] { background: var(--led); color: var(--bg); border-color: var(--led); }
+.tour-carregando { position: absolute; left: 50%; top: 50%; z-index: 2; transform: translate(-50%, -50%); font: 600 .8125rem/1 var(--ft); letter-spacing: .16em; text-transform: uppercase; color: var(--leg); opacity: 0; transition: opacity .3s; pointer-events: none; }
+.tour.carregando .tour-carregando { opacity: 1; }
+@media (min-width: 901px) { .tour-chips { justify-content: center; } }
+
+/* Movimento reduzido: tudo pronto e parado */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; scroll-behavior: auto !important; }
+}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"HealthClub","name":"SkyFit CT Salim","url":"https://yiszguinho.github.io/skyfit-ct-salim/","image":"https://yiszguinho.github.io/skyfit-ct-salim/img/og.jpg","telephone":"+55 11 94160-5867","address":{"@type":"PostalAddress","streetAddress":"Av. Salim Farah Maluf, 950","addressLocality":"São Paulo","addressRegion":"SP","postalCode":"03304-090","addressCountry":"BR"},"geo":{"@type":"GeoCoordinates","latitude":-23.53968,"longitude":-46.5815},"openingHoursSpecification":{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"00:00","closes":"23:59"},"sameAs":["https://www.instagram.com/skyfitctsalim/"]}
+</script>
+</head>
+<body>
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-zap" viewBox="0 0 24 24"><path d="M12 2.6a9.4 9.4 0 0 0-8.1 14.2L2.6 21.4l4.7-1.2A9.4 9.4 0 1 0 12 2.6Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8.7 7.3c.3-.3.8-.3 1 .1l1 1.6c.2.3.1.7-.1 1l-.6.6c.6 1.3 1.6 2.3 2.9 2.9l.6-.6c.3-.3.7-.3 1-.1l1.6 1c.4.2.4.7.1 1l-.8.9c-.5.5-1.3.6-2 .3a10 10 0 0 1-5-5c-.3-.7-.2-1.5.3-2Z" fill="currentColor"/></symbol>
+  <symbol id="i-estrela" viewBox="0 0 24 24"><path d="m12 2.4 2.9 6 6.6.9-4.8 4.6 1.2 6.6L12 17.3l-5.9 3.2 1.2-6.6-4.8-4.6 6.6-.9Z" fill="currentColor"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M3 7h18M3 12h18M3 17h12" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="m5 5 14 14M19 5 5 19" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M6 4v16l14-8Z" fill="currentColor"/></symbol>
+  <symbol id="i-pausa" viewBox="0 0 24 24"><path d="M7 5h3.5v14H7zm6.5 0H17v14h-3.5z" fill="currentColor"/></symbol>
+  <symbol id="i-360" viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="10" ry="4.2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 5.5v13" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="m18.5 14.8 2.4 1.4-2.6.9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+  <symbol id="i-baixo" viewBox="0 0 24 24"><path d="M12 4v15m-6-6 6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+  <symbol id="i-lado" viewBox="0 0 24 24"><path d="M4 12h15m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+  <symbol id="i-maos" viewBox="0 0 24 24"><path d="M7 12h10M7 12l3-3M7 12l3 3M17 12l-3-3M17 12l-3 3" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.2" opacity=".5"/></symbol>
+</svg>
+
+<header class="topo">
+  <a class="marca" href="#inicio" aria-label="SkyFit CT Salim, voltar ao início">
+    <img src="logo/logo-ct-360.webp" width="360" height="378" alt="">
+    <span>SkyFit CT Salim</span>
+  </a>
+  <nav class="nav" aria-label="Seções do site">
+    <a href="#estrutura">Estrutura</a>
+    <a href="#modalidades">Modalidades</a>
+    <a href="#planos">Planos</a>
+    <a href="#avaliacoes">Avaliações</a>
+    <a href="#como-chegar">Como chegar</a>
+  </nav>
+  <span class="selo24"><i aria-hidden="true"></i><span class="d">Aberto</span>24h</span>
+  <a class="btn" href="https://wa.me/5511941605867" data-zap="visita"><svg aria-hidden="true"><use href="#i-zap"/></svg>WhatsApp</a>
+  <button class="btn-menu" type="button" aria-expanded="false" aria-controls="menu" aria-label="Menu"><svg aria-hidden="true"><use href="#i-menu"/></svg><span class="t">Menu</span></button>
+</header>
+
+<div class="menu" id="menu" inert data-lenis-prevent>
+  <div class="menu-fundo" data-fechar></div>
+  <div class="menu-lamina" role="dialog" aria-modal="true" aria-label="Menu">
+    <div class="menu-cab"><span>Menu</span><button class="menu-x" type="button" data-fechar aria-label="Fechar o menu"><svg aria-hidden="true"><use href="#i-x"/></svg></button></div>
+    <nav aria-label="Seções do site">
+      <a href="#estrutura">Estrutura</a>
+      <a href="#modalidades">Modalidades</a>
+      <a href="#planos">Planos</a>
+      <a href="#avaliacoes">Avaliações</a>
+      <a href="#como-chegar">Como chegar</a>
+    </nav>
+    <div class="menu-acoes">
+      <button class="btn btn-l" type="button" data-tour="salao"><svg aria-hidden="true"><use href="#i-360"/></svg>Ver o CT em 360°</button>
+      <a class="btn" href="https://wa.me/5511941605867" data-zap="visita"><svg aria-hidden="true"><use href="#i-zap"/></svg>Agendar visita pelo WhatsApp</a>
+    </div>
+  </div>
+</div>
+
+<main id="conteudo">
+
+  <section class="hero" id="inicio" aria-label="Início">
+    <div class="hero-midia" aria-hidden="true">
+      <picture class="hero-foto">
+        <source media="(min-width: 901px)" srcset="img/hero-360.webp">
+        <img src="img/salao-v1-m.webp" srcset="img/salao-v1-m.webp 720w, img/salao-v1.webp 1200w" sizes="100vw" width="720" height="1280" alt="" fetchpriority="high">
+      </picture>
+      <picture class="hero-luz">
+        <source media="(min-width: 901px)" srcset="img/hero-360-luz.webp">
+        <img src="img/salao-v1-luz.webp" width="720" height="1280" alt="">
+      </picture>
+      <canvas class="hero-3d" id="ceu-hero"></canvas>
+    </div>
+    <div class="hero-sombra"></div>
+    <div class="hero-txt">
+      <img class="hero-logo" src="logo/logo-ct-720.webp" width="720" height="757" alt="Escudo do SkyFit CT Salim">
+      <h1>SkyFit <span>CT Salim</span></h1>
+      <p class="hero-linha">Academia de musculação 24 horas no Tatuapé</p>
+      <p class="hero-sub">Todos os dias, inclusive feriados, com professor a qualquer hora.</p>
+      <div class="hero-acoes">
+        <a class="btn" href="https://wa.me/5511941605867" data-zap="visita"><svg aria-hidden="true"><use href="#i-zap"/></svg>Agendar visita pelo WhatsApp</a>
+        <a class="btn btn-l" href="#planos">Ver planos</a>
+      </div>
+      <ul class="hero-fatos">
+        <li><b>★ 4,8 no Google</b> · 406 avaliações</li>
+        <li>Av. Salim Farah Maluf, 950 · 10 min a pé do Metrô Tatuapé</li>
+      </ul>
+    </div>
+    <div class="hero-olhar">
+      <p><svg aria-hidden="true"><use href="#i-maos"/></svg>Arraste para olhar em volta</p>
+      <button class="btn btn-l" type="button" data-tour="salao"><svg aria-hidden="true"><use href="#i-360"/></svg>Ver o CT em 360°</button>
+    </div>
+  </section>
+
+  <section class="estrelas" aria-labelledby="estrelas-t">
+    <div class="wrap">
+      <p class="rotulo" id="estrelas-t">3 estrelas no brasão</p>
+      <ol>
+        <li><svg aria-hidden="true"><use href="#i-estrela"/></svg><strong>1º CT SkyFit</strong><span>de São Paulo</span></li>
+        <li><svg aria-hidden="true"><use href="#i-estrela"/></svg><strong>24 horas</strong><span>todos os dias, inclusive feriados</span></li>
+        <li><svg aria-hidden="true"><use href="#i-estrela"/></svg><strong>2.500 m²</strong><span>climatizados, nível bodybuilder</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="voo" id="estrutura" aria-labelledby="voo-t">
+    <div class="voo-palco">
+      <div class="voo-esq" aria-hidden="true">
+        <div class="vn">
+          <div class="ativa"><span class="num">950</span><small>Av. Salim Farah Maluf</small></div>
+          <div><span class="num">2.500</span><small>m² climatizados</small></div>
+          <div><span class="num">100%</span><small>cardio Fyretech</small></div>
+          <div><span class="num">19h</span><small>e 20h · terças e quintas</small></div>
+        </div>
+      </div>
+      <div class="voo-janela">
+        <video id="voo-video" data-auto muted playsinline loop preload="none" controls poster="video/voo-m.webp" aria-label="Voo de drone pelo CT Salim, da avenida até a sala de spinning">
+          <source src="video/voo-m.mp4" type="video/mp4">
+        </video>
+        <canvas id="voo-canvas" role="img" aria-label="Voo de drone pelo CT Salim, da avenida até a sala de spinning"></canvas>
+        <button class="play" type="button" aria-label="Tocar o voo de drone"><span><svg aria-hidden="true"><use href="#i-play"/></svg></span><b>Toque para voar</b></button>
+        <button class="pausa" type="button" aria-label="Pausar o voo de drone"><svg aria-hidden="true"><use href="#i-pausa"/></svg></button>
+        <p class="voo-dica" aria-hidden="true"><svg><use href="#i-baixo"/></svg>Role para voar</p>
+        <div class="voo-rota" role="group" aria-label="Paradas do voo">
+          <button type="button" data-i="0" aria-current="true">Avenida<i></i></button>
+          <button type="button" data-i="1">Salão<i></i></button>
+          <button type="button" data-i="2">Cardio<i></i></button>
+          <button type="button" data-i="3">Sky Race<i></i></button>
+        </div>
+      </div>
+      <div class="voo-dir">
+        <p class="rotulo">Estrutura</p>
+        <h2 id="voo-t">Entre voando</h2>
+        <p class="voo-sub">Um voo de drone de verdade: da Av. Salim Farah Maluf até a porta da sala de spinning.</p>
+        <ol class="voo-paradas">
+          <li class="parada ativa">
+            <span class="parada-dado">950 · Av. Salim Farah Maluf</span>
+            <h3>Na avenida, perto do metrô</h3>
+            <p>O CT fica a cerca de 10 minutos a pé da estação Tatuapé, com estacionamento coberto e manobrista grátis.</p>
+          </li>
+          <li class="parada">
+            <span class="parada-dado">2.500 m² climatizados</span>
+            <h3>Salão de musculação</h3>
+            <p>Máquinas articuladas Cimerian, amplo espaço de peso livre e o teto de hexágonos de LED que nunca apaga.</p>
+          </li>
+          <li class="parada">
+            <span class="parada-dado">100% Fyretech</span>
+            <h3>Cardio com vista</h3>
+            <p>Cardio 100% Fyretech, de frente para os janelões, com a cidade lá fora.</p>
+          </li>
+          <li class="parada">
+            <span class="parada-dado">19h e 20h · terças e quintas</span>
+            <h3>Sky Race</h3>
+            <p>O studio de spinning em neon. Terças e quintas às 19h e 20h, sextas às 8h. Agende com 24 horas de antecedência.</p>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec mais" aria-labelledby="mais-t">
+    <div class="wrap mais-in">
+      <div class="janela luz rv">
+        <img class="luz-base" src="img/vestiario.webp" width="1080" height="1350" loading="lazy" alt="Vestiário com bancada de espelhos iluminada em neon, como um camarim">
+        <img class="luz-camada" src="img/vestiario-luz.webp" width="800" height="1000" loading="lazy" alt="">
+      </div>
+      <div>
+        <p class="rotulo">Estrutura</p>
+        <h2 id="mais-t" class="rv">Também no CT</h2>
+        <ul class="checks">
+          <li class="rv"><b>Vestiários que mais parecem camarins</b>, com bancada de espelhos</li>
+          <li class="rv"><b>Avaliação física completa</b> com bioimpedância, em sala exclusiva</li>
+          <li class="rv"><b>Treino personalizado</b> para o seu objetivo</li>
+          <li class="rv"><b>Ambiente climatizado</b> e com acessibilidade</li>
+          <li class="rv"><b>Estacionamento coberto</b> com manobrista grátis</li>
+        </ul>
+        <button class="btn btn-l rv" type="button" data-tour="vestiario"><svg aria-hidden="true"><use href="#i-360"/></svg>Ver o CT em 360°</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec mod" id="modalidades" aria-labelledby="mod-t">
+    <div class="wrap">
+      <p class="rotulo">Modalidades</p>
+      <h2 id="mod-t" class="rv">Treinar fofo não está no nosso vocabulário.</h2>
+      <p class="lead rv">Musculação pesada, cardio, spinning e aulas em grupo no mesmo CT.</p>
+      <div class="mod-trilho">
+        <article class="mod-card rv">
+          <div class="janela luz">
+            <img class="luz-base" src="img/maquinas-hex-m.webp" srcset="img/maquinas-hex-m.webp 720w, img/maquinas-hex.webp 1200w" sizes="(min-width: 901px) 22vw, 78vw" width="720" height="960" loading="lazy" alt="Máquinas vermelhas Cimerian sob o teto de hexágonos de LED">
+            <img class="luz-camada" src="img/maquinas-hex-luz.webp" width="720" height="960" loading="lazy" alt="">
+          </div>
+          <h3>Musculação</h3>
+          <p>Máquinas articuladas Cimerian e amplo espaço de peso livre, com estrutura nível bodybuilder.</p>
+        </article>
+        <article class="mod-card rv">
+          <div class="janela luz">
+            <img class="luz-base" src="img/cardio-m.webp" srcset="img/cardio-m.webp 720w, img/cardio.webp 1200w" sizes="(min-width: 901px) 22vw, 78vw" width="720" height="1080" loading="lazy" alt="Esteiras Fyretech de frente para os janelões com vista da cidade">
+            <img class="luz-camada" src="img/cardio-luz.webp" width="720" height="1080" loading="lazy" alt="">
+          </div>
+          <h3>Cardio</h3>
+          <p>Cardio 100% Fyretech, de frente para os janelões com vista da cidade.</p>
+        </article>
+        <article class="mod-card rv">
+          <div class="janela vid">
+            <video data-auto data-src="video/skyrace.mp4" muted playsinline loop preload="none" poster="video/skyrace.webp" aria-label="Sala Sky Race de spinning, em neon azul"></video>
+            <button class="play" type="button" aria-label="Tocar o vídeo do Sky Race"><span><svg aria-hidden="true"><use href="#i-play"/></svg></span></button>
+            <button class="pausa" type="button" aria-label="Pausar o vídeo do Sky Race"><svg aria-hidden="true"><use href="#i-pausa"/></svg></button>
+            <div class="mod-tag" aria-hidden="true"><span class="num">19h</span></div>
+          </div>
+          <h3>Sky Race (spinning)</h3>
+          <p>Terças e quintas às 19h e 20h, sextas às 8h. Agende com 24 horas de antecedência. Alunos Wellhub e TotalPass também participam.</p>
+        </article>
+        <article class="mod-card rv">
+          <div class="janela luz">
+            <img class="luz-base" src="img/aulas.webp" width="720" height="900" loading="lazy" alt="Corredor das salas de aula com linhas de LED vermelhas e as placas Sky Race e Sky Dance">
+            <img class="luz-camada" src="img/aulas-luz.webp" width="720" height="900" loading="lazy" alt="">
+          </div>
+          <h3>Aulas coletivas</h3>
+          <p>Sky Dance, Sky Box, Sky Cardio e SkyCross, além de aulões de Jump, Step, Pilates e Alongamento.</p>
+        </article>
+      </div>
+      <p class="arraste" aria-hidden="true"><svg><use href="#i-lado"/></svg>Arraste para o lado</p>
+      <ul class="mod-mais rv" aria-label="Também no CT">
+        <li>Avaliação física com bioimpedância</li>
+        <li>Treino personalizado</li>
+        <li>Área externa a céu aberto</li>
+        <li>Plano Teen (15 a 17 anos)</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec h24" id="aberto-24h" aria-labelledby="h24-t">
+    <div class="h24-in">
+      <div class="h24-num" aria-hidden="true"><span class="num">24h</span></div>
+      <div class="janela vid">
+        <video data-auto data-src="video/noite.mp4" muted playsinline loop preload="none" poster="video/noite.webp" aria-label="Drone à noite sobre a fachada do CT, com as linhas de LED acesas e a avenida"></video>
+        <button class="play" type="button" aria-label="Tocar o vídeo da fachada à noite"><span><svg aria-hidden="true"><use href="#i-play"/></svg></span></button>
+        <button class="pausa" type="button" aria-label="Pausar o vídeo da fachada à noite"><svg aria-hidden="true"><use href="#i-pausa"/></svg></button>
+      </div>
+      <div class="h24-txt">
+        <p class="rotulo">Aberto 24 horas</p>
+        <h2 id="h24-t" class="rv">O céu daqui não apaga.</h2>
+        <p class="lead rv">Três da manhã: salão aceso e professor de plantão. Domingo e feriado também.</p>
+        <p class="rv">Lá fora, a avenida dorme. Aqui dentro, o teto de hexágonos de LED continua aceso para quem treina cedo, tarde ou de madrugada.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec alem" id="alem-do-treino" aria-labelledby="alem-t">
+    <div class="wrap">
+      <p class="rotulo">Além do treino</p>
+      <h2 id="alem-t" class="rv">Tudo no mesmo endereço.</h2>
+      <div class="alem-grade">
+        <article class="alem-card txt rv">
+          <span class="num" aria-hidden="true">Boali</span>
+          <h3>Restaurante Boali</h3>
+          <p>Comida saudável dentro do CT, para comer antes ou depois do treino.</p>
+        </article>
+        <article class="alem-card rv">
+          <div class="janela luz">
+            <img class="luz-base" src="img/sky-coffee-m.webp" srcset="img/sky-coffee-m.webp 720w, img/sky-coffee.webp 1200w" sizes="(min-width: 901px) 30vw, 48vw" width="720" height="960" loading="lazy" alt="Balcão do Sky Coffee com letreiro de neon">
+            <img class="luz-camada" src="img/sky-coffee-luz.webp" width="720" height="960" loading="lazy" alt="">
+          </div>
+          <h3>Sky Coffee</h3>
+          <p>O café do CT.</p>
+        </article>
+        <article class="alem-card rv">
+          <div class="janela luz">
+            <img class="luz-base" src="img/loja-m.webp" srcset="img/loja-m.webp 900w, img/loja.webp 1600w" sizes="(min-width: 901px) 30vw, 48vw" width="900" height="675" loading="lazy" alt="Loja de suplementos #SKYLOVERS">
+            <img class="luz-camada" src="img/loja-luz.webp" width="800" height="600" loading="lazy" alt="">
+          </div>
+          <h3>#SKYLOVERS</h3>
+          <p>Loja de suplementos.</p>
+        </article>
+        <article class="alem-card rv">
+          <div class="janela luz">
+            <img class="luz-base" src="img/lounge-asas-m.webp" srcset="img/lounge-asas-m.webp 900w, img/lounge-asas.webp 1600w" sizes="(min-width: 901px) 30vw, 48vw" width="900" height="675" loading="lazy" alt="Lounge com poltronas, plantas e o mural de asas vermelhas">
+            <img class="luz-camada" src="img/lounge-asas-luz.webp" width="800" height="600" loading="lazy" alt="">
+          </div>
+          <h3>Lounge</h3>
+          <p>Com o mural de asas e vista da cidade.</p>
+        </article>
+        <article class="alem-card rv">
+          <div class="janela luz">
+            <img class="luz-base" src="img/estacionamento.webp" width="1080" height="1350" loading="lazy" alt="Estacionamento coberto do CT">
+            <img class="luz-camada" src="img/estacionamento-luz.webp" width="800" height="1000" loading="lazy" alt="">
+          </div>
+          <h3>Manobrista grátis</h3>
+          <p>Estacionamento coberto no próprio CT.</p>
+        </article>
+        <article class="alem-card txt rv">
+          <span class="num" aria-hidden="true">R$ 40</span>
+          <h3>Lava-Rápido CT Salim</h3>
+          <p>Lavagem simples a partir de R$ 40, completa a partir de R$ 80 e moto a partir de R$ 50. Terça a sexta, das 7h às 17h; sábado e domingo, das 8h30 às 17h. Aberto também para quem não treina.</p>
+          <a class="btn btn-l" href="https://wa.me/5511941605867" data-zap="lava"><svg aria-hidden="true"><use href="#i-zap"/></svg>Agendar lavagem</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec aval" id="avaliacoes" aria-labelledby="aval-t">
+    <div class="wrap">
+      <div class="aval-cab">
+        <div class="aval-num" aria-hidden="true"><span class="num">4,8</span></div>
+        <div>
+          <p class="rotulo">Avaliações</p>
+          <div class="estrelas5" role="img" aria-label="Nota 4,8 de 5"><svg><use href="#i-estrela"/></svg><svg><use href="#i-estrela"/></svg><svg><use href="#i-estrela"/></svg><svg><use href="#i-estrela"/></svg><svg><use href="#i-estrela"/></svg></div>
+          <h2 id="aval-t" class="rv">406 avaliações no Google</h2>
+          <p class="lead rv">Os mais citados pelos alunos: recepção (65 menções), estrutura (61) e equipamentos (60).</p>
+        </div>
+      </div>
+      <div class="aval-lista">
+        <blockquote class="rv">
+          <p>“Academia excelente, com ótima estrutura, ambiente agradável e profissionais muito atenciosos e preparados. Gostaria de destacar especialmente o atendimento da Sheila e da Lina, sempre muito prestativas e simpáticas. Recomendo muito!”</p>
+          <cite>Lucas Alves</cite>
+        </blockquote>
+        <blockquote class="rv">
+          <p>“Academia excelente. É um Centro de Treinamento que conta com os melhores equipamentos para treinos de musculação […]. O local possui excelente infraestrutura, com diversas máquinas articuladas, espaços bem definidos, amplo espaço para peso livre e uma área de cardio. […] Vestiário muito bem equipado.”</p>
+          <cite>Marco Aurélio San · Local Guide</cite>
+        </blockquote>
+        <blockquote class="rv">
+          <p>“Academia top! Prof. Daniel e todos os outros muito atenciosos, ótimos profissionais, sempre acompanhando os exercícios e dando ótimas dicas! Recomendo demais!”</p>
+          <cite>Fernando Mortaia</cite>
+        </blockquote>
+      </div>
+      <p class="aval-rodape"><a class="link" href="https://www.google.com/maps/search/?api=1&amp;query=SkyFit%20CT%20Salim%20Av.%20Salim%20Farah%20Maluf%20950" target="_blank" rel="noopener">Ver todas as avaliações no Google</a></p>
+    </div>
+  </section>
+
+  <section class="sec planos" id="planos" aria-labelledby="planos-t">
+    <div class="wrap">
+      <p class="rotulo">Planos</p>
+      <h2 id="planos-t" class="rv">Resultado não é opcional.</h2>
+      <p class="lead rv">Escolha o plano e faça a matrícula on-line, ou tire suas dúvidas no WhatsApp antes.</p>
+      <div class="planos-grade">
+        <article class="plano destaque rv">
+          <p class="plano-tag">Mais econômico</p>
+          <h3>Águia Anual</h3>
+          <p class="preco"><small>R$</small> 174,90<small> /mês</small></p>
+          <p class="desc">Plano de 12 meses, exclusivo desta unidade.</p>
+          <a class="btn" href="https://evo-totem.w12app.com.br/skyfitacademia/680/site/landing-page/checkout/22972/0" target="_blank" rel="noopener">Matricular no Águia Anual</a>
+        </article>
+        <article class="plano rv">
+          <p class="plano-tag"></p>
+          <h3>Sky Recorrente</h3>
+          <p class="preco"><small>R$</small> 214,90<small> /mês</small></p>
+          <p class="desc">Cobrança mensal recorrente, com aviso prévio de 30 dias para cancelar.</p>
+          <a class="btn btn-l" href="https://evo-totem.w12app.com.br/skyfitacademia/680/site/landing-page/checkout/22970/0" target="_blank" rel="noopener">Matricular no Sky Recorrente</a>
+        </article>
+        <article class="plano rv">
+          <p class="plano-tag"></p>
+          <h3>Prime Mensal</h3>
+          <p class="preco"><small>R$</small> 244,90</p>
+          <p class="desc">Um mês, sem fidelidade.</p>
+          <a class="btn btn-l" href="https://evo-totem.w12app.com.br/skyfitacademia/680/site/landing-page/checkout/22968/0" target="_blank" rel="noopener">Matricular no Prime Mensal</a>
+        </article>
+      </div>
+      <ul class="planos-mais">
+        <li class="rv"><b>Plano Teen:</b> R$ 209,90/mês, de 15 a 17 anos, para treinar das 11h às 16h.</li>
+        <li class="rv"><b>Wellhub (Gympass):</b> aceito a partir do plano Silver.</li>
+        <li class="rv"><b>TotalPass:</b> aceito a partir do plano TP2.</li>
+      </ul>
+      <div class="planos-duvida rv">
+        <p>Ficou com dúvida sobre os planos?</p>
+        <a class="btn" href="https://wa.me/5511941605867" data-zap="planos"><svg aria-hidden="true"><use href="#i-zap"/></svg>Chamar no WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec chegar" id="como-chegar" aria-labelledby="chegar-t">
+    <div class="wrap chegar-in">
+      <div class="janela luz rv">
+        <img class="luz-base" src="img/fachada-noite.webp" srcset="img/fachada-noite-m.webp 800w, img/fachada-noite.webp 1072w" sizes="(min-width: 901px) 50vw, 100vw" width="1072" height="851" loading="lazy" alt="Fachada do CT à noite vista do alto, com as linhas de LED acesas e a avenida">
+        <img class="luz-camada" src="img/fachada-noite-luz.webp" width="800" height="635" loading="lazy" alt="">
+      </div>
+      <div>
+        <p class="rotulo">Como chegar</p>
+        <h2 id="chegar-t" class="rv">Av. Salim Farah Maluf, 950</h2>
+        <address class="rv">Tatuapé, São Paulo – SP · CEP 03304-090</address>
+        <ul class="checks">
+          <li class="rv">Cerca de <b>10 minutos a pé da estação Tatuapé</b> (Metrô Linha 3-Vermelha e CPTM)</li>
+          <li class="rv"><b>Estacionamento coberto</b> com manobrista grátis</li>
+          <li class="rv"><b>Aberto 24 horas</b>, todos os dias, inclusive feriados</li>
+        </ul>
+        <div class="chegar-acoes rv">
+          <a class="btn" href="https://www.google.com/maps/dir/?api=1&amp;destination=Av.%20Salim%20Farah%20Maluf%2C%20950%20-%20Tatuap%C3%A9%2C%20S%C3%A3o%20Paulo%20-%20SP" target="_blank" rel="noopener">Abrir no Google Maps</a>
+          <button class="btn btn-l" type="button" id="ver-mapa" aria-controls="mapa">Ver o mapa aqui</button>
+        </div>
+        <div class="mapa" id="mapa" hidden></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="final" aria-labelledby="final-t">
+    <div class="janela luz">
+      <img class="luz-base" src="img/final-teto.webp" width="1920" height="1080" loading="lazy" alt="">
+      <img class="luz-camada" src="img/final-teto-luz.webp" width="800" height="450" loading="lazy" alt="">
+    </div>
+    <div>
+      <img class="logo rv" src="logo/logo-ct-360.webp" width="360" height="378" loading="lazy" alt="Escudo do SkyFit CT Salim">
+      <h2 id="final-t" class="rv">Treinar nunca foi em tão alto nível.</h2>
+      <p class="rv">Venha conhecer o primeiro CT SkyFit de São Paulo. Chame no WhatsApp e agende sua visita.</p>
+      <a class="btn rv" href="https://wa.me/5511941605867" data-zap="visita"><svg aria-hidden="true"><use href="#i-zap"/></svg>Agendar visita pelo WhatsApp</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="rodape">
+  <div>
+    <img class="logo" src="logo/logo-ct-360.webp" width="360" height="378" loading="lazy" alt="">
+    <p><strong>SkyFit CT Salim</strong><br>Av. Salim Farah Maluf, 950 – Tatuapé<br>São Paulo – SP, 03304-090</p>
+  </div>
+  <div>
+    <p>WhatsApp: <a href="https://wa.me/5511941605867" data-zap="duvida">(11) 94160-5867</a><br>Instagram: <a href="https://www.instagram.com/skyfitctsalim/" target="_blank" rel="noopener">@skyfitctsalim</a><br>Aberto 24 horas, todos os dias, inclusive feriados.</p>
+  </div>
+  <div class="rede">
+    <img src="logo/skyfit-rede-negativa.webp" width="553" height="179" loading="lazy" alt="SkyFit Academia">
+    <p>Uma unidade da rede SkyFit Academia.</p>
+  </div>
+</footer>
+
+<div class="tour" id="tour" role="dialog" aria-modal="true" aria-labelledby="tour-t" inert data-lenis-prevent>
+  <canvas id="ceu-tour" aria-label="Foto 360° do CT. Arraste para olhar em volta; as setas do teclado também giram a vista."></canvas>
+  <div class="tour-cab">
+    <div><h2 id="tour-t">CT Salim em 360°</h2><p id="tour-legenda">Salão de musculação · arraste para olhar em volta</p></div>
+    <button class="tour-x" type="button" aria-label="Fechar o tour 360°"><svg aria-hidden="true"><use href="#i-x"/></svg></button>
+  </div>
+  <p class="tour-carregando" aria-live="polite">Carregando…</p>
+  <div class="tour-chips" role="group" aria-label="Lugares do tour">
+    <button type="button" data-cena="salao" aria-pressed="true">Salão</button>
+    <button type="button" data-cena="vestiario" aria-pressed="false">Vestiário</button>
+    <button type="button" data-cena="externa" aria-pressed="false">Área externa</button>
+    <button type="button" data-cena="rampa" aria-pressed="false">Vista da avenida</button>
+    <button type="button" data-cena="entrada" aria-pressed="false">Entrada e estacionamento</button>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+(() => {
+  'use strict';
+  const $ = (s, c = document) => c.querySelector(s);
+  const $$ = (s, c = document) => [...c.querySelectorAll(s)];
+  const html = document.documentElement;
+  const RM = html.classList.contains('rm');
+  const DESK = () => matchMedia('(min-width: 901px)').matches;
+  const ECON = !!(navigator.connection && navigator.connection.saveData);
+
+  /* ---------- WhatsApp com mensagem pronta ---------- */
+  const ZAP = '5511941605867';
+  const MSG = {
+    visita: 'Olá! Vi o site do SkyFit CT Salim e quero agendar uma visita.',
+    planos: 'Olá! Vi o site do SkyFit CT Salim e quero saber mais sobre os planos.',
+    lava: 'Olá! Quero agendar uma lavagem no Lava-Rápido CT Salim.',
+    duvida: 'Olá! Vi o site do SkyFit CT Salim e tenho uma dúvida.'
+  };
+  $$('[data-zap]').forEach((a) => {
+    a.href = 'https://wa.me/' + ZAP + '?text=' + encodeURIComponent(MSG[a.dataset.zap] || MSG.visita);
+    a.target = '_blank'; a.rel = 'noopener';
+  });
+
+  /* ---------- WebGL (tour 360° e topo do computador) ---------- */
+  const temWebGL = (() => {
+    try { const c = document.createElement('canvas'); return !!(window.WebGLRenderingContext && (c.getContext('webgl2') || c.getContext('webgl'))); }
+    catch (e) { return false; }
+  })();
+  html.classList.toggle('webgl', temWebGL);
+  let modulo = null;
+  const carregarModulo = () => modulo || (modulo = import('./ceu.js'));
+
+  /* ---------- Rolagem suave + GSAP ---------- */
+  const temGsap = !!(window.gsap && window.ScrollTrigger);
+  let lenis = null;
+  if (temGsap) {
+    gsap.registerPlugin(ScrollTrigger);
+    ScrollTrigger.config({ ignoreMobileResize: true });
+    if (window.Lenis && !RM) {
+      lenis = new Lenis({ lerp: 0.1 });
+      ScrollTrigger.addEventListener('refresh', () => lenis.resize());
+      lenis.on('scroll', ScrollTrigger.update);
+      gsap.ticker.add((t) => lenis.raf(t * 1000));
+      gsap.ticker.lagSmoothing(0);
+    }
+  } else {
+    html.classList.remove('js', 'abertura');
+  }
+  window.SITE = { lenis, state: {} };
+
+  const topo = $('.topo');
+  const folga = () => topo.offsetHeight + 12;
+  function irPara(el, dur = 1.4) {
+    const y = el.getBoundingClientRect().top + window.scrollY - (el.id === 'estrutura' && DESK() && !RM ? 0 : folga());
+    if (lenis) lenis.scrollTo(Math.max(0, y), { duration: dur });
+    else window.scrollTo({ top: Math.max(0, y), behavior: RM ? 'auto' : 'smooth' });
+  }
+  $$('a[href^="#"]').forEach((a) => a.addEventListener('click', (e) => {
+    const id = a.getAttribute('href');
+    const el = id.length > 1 && document.getElementById(id.slice(1));
+    if (!el) return;
+    e.preventDefault();
+    fecharMenu(false);
+    irPara(el);
+    // O foco vai junto: teclado e leitor de tela continuam de onde a tela foi
+    if (!el.hasAttribute('tabindex')) el.setAttribute('tabindex', '-1');
+    el.focus({ preventScroll: true });
+  }));
+
+  /* ---------- Menu do celular ---------- */
+  const menu = $('#menu'), lamina = $('.menu-lamina'), btnMenu = $('.btn-menu');
+  let focoMenu = null;
+  function abrirMenu() {
+    menu.classList.add('aberto'); menu.removeAttribute('inert');
+    btnMenu.setAttribute('aria-expanded', 'true');
+    if (lenis) lenis.stop();
+    focoMenu = document.activeElement;
+    setTimeout(() => { const f = $('nav a', lamina); if (f) f.focus({ preventScroll: true }); }, 60);
+  }
+  function fecharMenu(devolverFoco = true) {
+    if (!menu.classList.contains('aberto')) return;
+    menu.classList.remove('aberto'); menu.setAttribute('inert', '');
+    btnMenu.setAttribute('aria-expanded', 'false');
+    if (lenis && !tour.classList.contains('aberto')) lenis.start();
+    if (devolverFoco) (focoMenu || btnMenu).focus({ preventScroll: true });
+  }
+  btnMenu.addEventListener('click', () => (menu.classList.contains('aberto') ? fecharMenu() : abrirMenu()));
+  $$('[data-fechar]', menu).forEach((b) => b.addEventListener('click', () => fecharMenu()));
+  function prenderFoco(caixa, e) {
+    if (e.key !== 'Tab') return;
+    const f = $$('a[href], button:not([disabled])', caixa).filter((x) => x.offsetParent !== null);
+    if (!f.length) return;
+    const ini = f[0], fim = f[f.length - 1];
+    if (e.shiftKey && document.activeElement === ini) { e.preventDefault(); fim.focus(); }
+    else if (!e.shiftKey && document.activeElement === fim) { e.preventDefault(); ini.focus(); }
+  }
+  lamina.addEventListener('keydown', (e) => prenderFoco(lamina, e));
+  matchMedia('(min-width: 901px)').addEventListener('change', (e) => { if (e.matches) fecharMenu(false); });
+
+  /* ---------- Vídeos que tocam só quando aparecem ---------- */
+  const caixaDo = (el) => el.closest('.janela, .voo-janela');
+  function mostrarPlay(v) { const j = caixaDo(v); if (j) j.classList.add('parado'); }
+  function tocar(v) {
+    if (v.closest('.voo--scrub')) return;
+    if (!v.src && v.dataset.src) v.src = v.dataset.src;
+    const p = v.play();
+    // AbortError: o vídeo saiu da tela antes de começar (pause no meio do play). Não é autoplay bloqueado
+    if (p && p.then) p.then(() => { const j = caixaDo(v); if (j) j.classList.remove('parado'); }).catch((e) => { if (!e || e.name !== 'AbortError') mostrarPlay(v); });
+  }
+  const autoVids = $$('video[data-auto]');
+  const vooVideo = $('#voo-video');
+  const vooComControles = RM || ECON; // aí o voo usa os controles do navegador
+  if (!vooComControles) vooVideo.removeAttribute('controls');
+  autoVids.forEach((v) => {
+    const caixa = caixaDo(v);
+    v.addEventListener('play', () => caixa.classList.add('tocando'));
+    v.addEventListener('pause', () => caixa.classList.remove('tocando'));
+  });
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((ents) => ents.forEach((en) => {
+      const v = en.target;
+      if (en.isIntersecting) {
+        // Pausado pela pessoa fica pausado; o voo com controles do navegador espera o toque dela
+        if (v.dataset.pausado || (v === vooVideo && vooComControles)) return;
+        if (RM || ECON) mostrarPlay(v); else tocar(v);
+      } else if (!v.paused) v.pause();
+    }), { threshold: 0.35 });
+    autoVids.forEach((v) => io.observe(v));
+  }
+  $$('.play').forEach((b) => b.addEventListener('click', () => {
+    const caixa = caixaDo(b), v = $('video', caixa);
+    if (caixa.closest('.voo--scrub')) return;
+    delete v.dataset.pausado;
+    if (!v.src && v.dataset.src) v.src = v.dataset.src;
+    v.play().then(() => {
+      // O botão de tocar some: o foco passa para o de pausar (que só aparece depois de sair o .parado)
+      const tinhaFoco = document.activeElement === b, pausa = $('.pausa', caixa);
+      caixa.classList.remove('parado');
+      if (tinhaFoco && pausa) pausa.focus({ preventScroll: true });
+    }).catch(() => {});
+  }));
+  $$('.pausa').forEach((b) => b.addEventListener('click', () => {
+    const caixa = caixaDo(b), v = $('video', caixa);
+    v.dataset.pausado = '1';
+    v.pause();
+    caixa.classList.add('parado');
+    $('.play', caixa).focus({ preventScroll: true });
+  }));
+
+  /* ---------- Entre voando: o voo do drone ---------- */
+  const voo = $('#estrutura');
+  const VOO = { total: 280, fps: 12, inicio: [0, 49, 151, 229], quadros: [], alvo: 0, atual: 0, desenhado: -1, ativo: false, st: null, parada: 0, visto: false, dica: true };
+  const vooCanvas = $('#voo-canvas'), vooCtx = vooCanvas.getContext('2d');
+  const rotaBtns = $$('.voo-rota button'), paradas = $$('.parada'), vns = $$('.vn > div'), dica = $('.voo-dica');
+
+  function marcarParada(i) {
+    if (i === VOO.parada) return;
+    VOO.parada = i;
+    paradas.forEach((p, k) => p.classList.toggle('ativa', k === i));
+    vns.forEach((d, k) => { d.classList.toggle('ativa', k === i); if (k === i && VOO.visto) $('.num', d).classList.add('aceso'); });
+    rotaBtns.forEach((b, k) => b.setAttribute('aria-current', k === i ? 'true' : 'false'));
+  }
+  function paradaDoQuadro(q) { let i = 0; VOO.inicio.forEach((ini, k) => { if (q >= ini) i = k; }); return i; }
+  function barraRota(q) {
+    rotaBtns.forEach((b, k) => {
+      const ini = VOO.inicio[k], fim = k < 3 ? VOO.inicio[k + 1] : VOO.total - 1;
+      $('i', b).style.transform = 'scaleX(' + Math.min(1, Math.max(0, (q - ini) / (fim - ini))) + ')';
+    });
+  }
+  // Ordem de carga "binária": primeiro, último, meio, quartos... o voo funciona na hora e vai ficando fluido
+  function ordemBinaria(n) {
+    const ordem = [0, n - 1], visto = new Set(ordem), fila = [[0, n - 1]];
+    while (fila.length) {
+      const [a, b] = fila.shift();
+      if (b - a <= 1) continue;
+      const m = (a + b) >> 1;
+      if (!visto.has(m)) { visto.add(m); ordem.push(m); }
+      fila.push([a, m], [m, b]);
+    }
+    return ordem;
+  }
+  function carregarVoo() {
+    if (VOO.carregando) return;
+    VOO.carregando = true;
+    const ordem = ordemBinaria(VOO.total);
+    let i = 0;
+    const proximo = () => {
+      if (i >= ordem.length) return;
+      const k = ordem[i++];
+      const img = new Image();
+      img.decoding = 'async';
+      img.onload = () => { VOO.quadros[k] = img; VOO.desenhado = -1; proximo(); };
+      img.onerror = proximo;
+      img.src = 'voo/d/' + String(k).padStart(3, '0') + '.webp';
+    };
+    for (let n = 0; n < 6; n++) proximo();
+  }
+  function maisPerto(k) {
+    if (VOO.quadros[k]) return k;
+    for (let d = 1; d < VOO.total; d++) {
+      if (VOO.quadros[k - d]) return k - d;
+      if (VOO.quadros[k + d]) return k + d;
+    }
+    return -1;
+  }
+  function tamanhoVoo() {
+    const r = vooCanvas.getBoundingClientRect();
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    vooCanvas.width = Math.max(1, Math.round(r.width * dpr));
+    vooCanvas.height = Math.max(1, Math.round(r.height * dpr));
+    VOO.desenhado = -1;
+  }
+  function desenharVoo() {
+    const f = VOO.atual * (VOO.total - 1);
+    const a = Math.floor(f), b = Math.min(VOO.total - 1, a + 1), frac = f - a;
+    const ia = maisPerto(a);
+    if (ia < 0) return;
+    const W = vooCanvas.width, H = vooCanvas.height;
+    vooCtx.globalAlpha = 1;
+    vooCtx.drawImage(VOO.quadros[ia], 0, 0, W, H);
+    // Mistura com o quadro seguinte: a rolagem fica lisa mesmo com 12 quadros por segundo
+    if (ia === a && VOO.quadros[b] && frac > 0.04) {
+      vooCtx.globalAlpha = frac;
+      vooCtx.drawImage(VOO.quadros[b], 0, 0, W, H);
+      vooCtx.globalAlpha = 1;
+    }
+  }
+  function irParaParada(i) {
+    if (VOO.ativo && VOO.st) {
+      const p = (VOO.inicio[i] + (i ? 4 : 0)) / (VOO.total - 1);
+      const y = VOO.st.start + (VOO.st.end - VOO.st.start) * p;
+      if (lenis) lenis.scrollTo(y, { duration: 1.6 }); else window.scrollTo({ top: y, behavior: 'smooth' });
+    } else {
+      vooVideo.currentTime = VOO.inicio[i] / VOO.fps + 0.05;
+      marcarParada(i);
+      barraRota(VOO.inicio[i]);
+      // Movimento reduzido: mostra o quadro parado daquele ponto, sem pôr o voo para rodar
+      if (RM) { vooVideo.pause(); vooVideo.poster = 'voo/d/' + String(VOO.inicio[i]).padStart(3, '0') + '.webp'; }
+      else { delete vooVideo.dataset.pausado; tocar(vooVideo); }
+    }
+  }
+  rotaBtns.forEach((b, i) => b.addEventListener('click', () => irParaParada(i)));
+  vooVideo.addEventListener('timeupdate', () => {
+    if (VOO.ativo) return;
+    const q = Math.min(VOO.total - 1, vooVideo.currentTime * VOO.fps);
+    marcarParada(paradaDoQuadro(q));
+    barraRota(q);
+  });
+  VOO.parada = -1; marcarParada(0); barraRota(0);
+
+  /* ---------- Luz primeiro: a foto acende pelas luzes ---------- */
+  function pronta(img) {
+    return new Promise((ok) => {
+      if (!img || (img.complete && img.naturalWidth)) return ok();
+      const fim = () => ok();
+      img.addEventListener('load', fim, { once: true });
+      img.addEventListener('error', fim, { once: true });
+      setTimeout(fim, 2500);
+    });
+  }
+  async function acender(el) {
+    if (el.classList.contains('acesa') || el.dataset.acendendo) return;
+    el.dataset.acendendo = '1';
+    const base = $('.luz-base', el), cam = $('.luz-camada', el);
+    if (base && base.loading === 'lazy') base.loading = 'eager';
+    if (cam && cam.loading === 'lazy') cam.loading = 'eager';
+    await Promise.all([pronta(base), pronta(cam)]);
+    if (!temGsap || RM || !cam) { el.classList.add('acesa'); return; }
+    gsap.timeline({ onComplete: () => { el.classList.add('acesa'); gsap.set([base, cam], { clearProps: 'opacity' }); } })
+      .fromTo(cam, { opacity: 0 }, { opacity: 1, duration: 0.55, ease: 'power1.out' })
+      .fromTo(base, { opacity: 0 }, { opacity: 1, duration: 0.95, ease: 'power2.inOut' }, 0.35)
+      .to(cam, { opacity: 0, duration: 0.7, ease: 'power1.inOut' }, 1.05);
+  }
+
+  /* ---------- Abertura: o teto acende e a câmera desce até o salão ---------- */
+  let heroEsf = null, heroNaTela = true;
+  const heroCanvas = $('#ceu-hero');
+  function textoEntra() {
+    // Sem clearProps aqui: com stagger cada item terminaria antes e piscaria (o CSS da abertura ainda o esconde)
+    return gsap.fromTo('.hero-txt > *, .hero-olhar', { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.7, stagger: 0.07, ease: 'power2.out' });
+  }
+  function terminarAbertura() {
+    html.classList.remove('abertura');
+    try { sessionStorage.setItem('ctAbertura', '1'); } catch (e) { /* aba anônima */ }
+    gsap.set('.hero-foto, .hero-luz, .hero-txt > *, .hero-olhar', { clearProps: 'opacity,transform' });
+  }
+  function aberturaFoto(desk) {
+    const foto = $('.hero-foto'), luz = $('.hero-luz');
+    const tl = gsap.timeline({ onComplete: terminarAbertura });
+    tl.fromTo(luz, { opacity: 0 }, { opacity: 1, duration: 0.6, ease: 'power1.out' })
+      .fromTo(foto, { opacity: 0 }, { opacity: 1, duration: 1.0, ease: 'power2.inOut' }, 0.45)
+      .to(luz, { opacity: 0, duration: 0.8 }, 1.2)
+      .fromTo([foto, luz], { scale: desk ? 1.12 : 1.45, transformOrigin: desk ? '50% 30%' : '50% 0%' }, { scale: 1, duration: 2.0, ease: 'power2.inOut' }, 0.1)
+      .add(textoEntra(), 1.5);
+    return tl;
+  }
+  function abertura3D(h) {
+    h.v.luz = 0; h.v.lat = 56; h.giro = 0;
+    heroCanvas.style.transition = 'none';
+    heroCanvas.classList.add('on');
+    gsap.set('.hero-foto', { opacity: 1 });
+    const tl = gsap.timeline({ onComplete: () => { heroCanvas.style.transition = ''; h.giro = 0.6; terminarAbertura(); } });
+    tl.to(h.v, { luz: 1, duration: 1.3, ease: 'power1.inOut' })
+      .to(h.v, { lat: 2, duration: 1.15, ease: 'power2.inOut' }, 0.85)
+      .add(textoEntra(), 1.55);
+    return tl;
+  }
+  function criarHero3D() {
+    if (!temWebGL || RM) return Promise.resolve(null);
+    return carregarModulo().then(async (m) => {
+      const h = new m.Esfera(heroCanvas, { fov: 66, latMin: -28, latMax: 66, giro: 0, cursor: matchMedia('(pointer: fine)').matches });
+      h.v.lon = 270; h.v.lat = 2;
+      if (html.classList.contains('abertura')) h.v.luz = 0; // a abertura acende o teto a partir do escuro
+      await h.usar('img/360-salao-m.jpg');
+      h.ligar();
+      heroEsf = h; window.SITE.state.hero = h;
+      if ('IntersectionObserver' in window) new IntersectionObserver((e) => { heroNaTela = e[0].isIntersecting; h.visivel = heroNaTela && !tour.classList.contains('aberto'); }).observe($('.hero'));
+      // Depois que tudo carregou, troca pela panorâmica de 4096 px (mais nítida em telas grandes)
+      const nitida = () => h.usar('img/360-salao.jpg').then(() => h.limpar(['img/360-salao.jpg'])).catch(() => {});
+      addEventListener('load', () => setTimeout(() => ('requestIdleCallback' in window ? requestIdleCallback(nitida) : nitida()), 1500), { once: true });
+      if (document.readyState === 'complete') setTimeout(nitida, 2500);
+      return h;
+    }).catch(() => null);
+  }
+  function iniciarTopo() {
+    const desk = DESK();
+    const abrir = html.classList.contains('abertura') && temGsap;
+    const promessa3D = desk ? criarHero3D() : Promise.resolve(null);
+    if (!abrir) {
+      promessa3D.then((h) => { if (h) { h.giro = 0.6; heroCanvas.classList.add('on'); } });
+      return;
+    }
+    // Rolar, tocar ou apertar uma tecla pula a abertura (mesmo antes de ela começar)
+    let tl = null, decidido = false, querPular = false;
+    const pular = () => { if (tl) tl.progress(1); else querPular = true; };
+    ['wheel', 'touchstart', 'keydown', 'pointerdown'].forEach((ev) => addEventListener(ev, pular, { passive: true, once: true }));
+    const decidir = (h) => {
+      if (decidido) return;
+      decidido = true;
+      tl = h ? abertura3D(h) : aberturaFoto(desk);
+      if (querPular) tl.progress(1);
+    };
+    if (!desk) { decidir(null); return; }
+    promessa3D.then((h) => {
+      if (!h) { decidir(null); return; }
+      if (!decidido) { decidir(h); return; }
+      // A foto abriu antes: o 3D entra suave por cima quando ela terminar
+      tl.then(() => { h.v.luz = 1; h.giro = 0.6; heroCanvas.classList.add('on'); });
+    });
+    setTimeout(() => decidir(null), 1200);
+  }
+
+  /* ---------- Tour 360° ---------- */
+  const tour = $('#tour'), tourCanvas = $('#ceu-tour'), tourLeg = $('#tour-legenda');
+  const CENAS = {
+    salao: { src: 'img/360-salao', lon: 270, lat: 2, nome: 'Salão de musculação' },
+    vestiario: { src: 'img/360-vestiario', lon: 180, lat: -3, nome: 'Vestiário' },
+    externa: { src: 'img/360-externa-tarde', lon: 200, lat: 4, nome: 'Área externa a céu aberto, com treino funcional' },
+    rampa: { src: 'img/360-externa-noite', lon: 120, lat: 4, nome: 'Rampa de acesso, com vista da avenida' },
+    entrada: { src: 'img/360-entrada', lon: 180, lat: 0, nome: 'Entrada e estacionamento coberto' }
+  };
+  let tourEsf = null, criandoTour = null, focoTour = null, cenaAtual = null, cenaPedida = 'salao';
+  async function mostrarCena(id) {
+    const c = CENAS[id];
+    if (!c) return;
+    cenaPedida = id;
+    $$('.tour-chips button').forEach((b) => b.setAttribute('aria-pressed', b.dataset.cena === id ? 'true' : 'false'));
+    tourLeg.textContent = c.nome + ' · arraste para olhar em volta';
+    tour.classList.add('carregando');
+    // O 3D ainda está chegando: o lugar fica guardado e aparece assim que ele carregar
+    if (!tourEsf) { prepararTour(); return; }
+    cenaAtual = id;
+    const url = c.src + (DESK() ? '.jpg' : '-m.jpg');
+    // Carrega antes de apagar o lugar atual: a troca só começa com a foto nova pronta
+    try { await tourEsf.textura(url); }
+    catch (e) {
+      if (cenaAtual === id) { tour.classList.remove('carregando'); tourLeg.textContent = 'Não foi possível carregar esta foto. Toque no lugar para tentar de novo.'; }
+      return;
+    }
+    if (cenaAtual !== id) return;
+    tour.classList.remove('carregando');
+    await tourEsf.mostrar(url, c.lon, c.lat);
+    if (cenaAtual === id) tourEsf.limpar([url]);
+  }
+  // O 3D do tour é criado uma vez só (no celular o three.js chega só quando o tour abre)
+  function criarTour() {
+    return criandoTour || (criandoTour = carregarModulo().then((m) => {
+      tourEsf = new m.Esfera(tourCanvas, { fov: DESK() ? 70 : 80, latMin: -36, latMax: 72, giro: 0 });
+      window.SITE.state.tour = tourEsf;
+      tourCanvas.addEventListener('wheel', (e) => { e.preventDefault(); tourEsf.zoom(e.deltaY * 0.02); }, { passive: false });
+      return tourEsf;
+    }).catch((e) => { criandoTour = null; throw e; }));
+  }
+  async function prepararTour() {
+    try { await criarTour(); }
+    catch (e) { tour.classList.remove('carregando'); tourLeg.textContent = 'O tour 360° não abriu neste aparelho.'; return; }
+    // Fechado enquanto o 3D chegava (ou já ligado por outro pedido): nada fica rodando escondido
+    if (!tour.classList.contains('aberto') || tourEsf.ligado) return;
+    tourEsf.ligar();
+    mostrarCena(cenaPedida);
+  }
+  function abrirTour(id) {
+    if (!temWebGL) return;
+    // Vindo do menu (que fecha e fica inerte), o foco depois volta para o botão Menu
+    const ativo = document.activeElement;
+    focoTour = menu.contains(ativo) ? btnMenu : ativo;
+    fecharMenu(false);
+    tour.classList.add('aberto'); tour.removeAttribute('inert');
+    if (lenis) lenis.stop();
+    if (heroEsf) heroEsf.visivel = false;
+    $('.tour-x').focus({ preventScroll: true });
+    if (tourEsf) tourEsf.ligar();
+    mostrarCena(id || 'salao');
+  }
+  function fecharTour() {
+    if (!tour.classList.contains('aberto')) return;
+    tour.classList.remove('aberto', 'carregando'); tour.setAttribute('inert', '');
+    if (tourEsf) tourEsf.desligar();
+    if (lenis && !menu.classList.contains('aberto')) lenis.start();
+    if (heroEsf) heroEsf.visivel = heroNaTela;
+    if (focoTour) focoTour.focus({ preventScroll: true });
+  }
+  $$('[data-tour]').forEach((b) => b.addEventListener('click', () => abrirTour(b.dataset.tour)));
+  $$('.tour-chips button').forEach((b) => b.addEventListener('click', () => mostrarCena(b.dataset.cena)));
+  $('.tour-x').addEventListener('click', fecharTour);
+  tour.addEventListener('keydown', (e) => {
+    prenderFoco(tour, e);
+    if (!tourEsf) return;
+    const passo = { ArrowLeft: -12, ArrowRight: 12 }[e.key];
+    if (!passo) return;
+    e.preventDefault();
+    if (window.gsap) gsap.to(tourEsf.v, { lon: tourEsf.v.lon + passo, duration: 0.5, ease: 'power2.out' });
+    else tourEsf.v.lon += passo; // sem GSAP (CDN fora do ar), gira sem animação
+  });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { fecharTour(); fecharMenu(); } });
+
+  /* ---------- Mapa só quando pedir ---------- */
+  $('#ver-mapa').addEventListener('click', (e) => {
+    const caixa = $('#mapa');
+    if (!caixa.firstChild) {
+      const f = document.createElement('iframe');
+      f.src = 'https://www.google.com/maps?q=SkyFit%20CT%20Salim%2C%20Av.%20Salim%20Farah%20Maluf%2C%20950%20-%20Tatuap%C3%A9%2C%20S%C3%A3o%20Paulo&z=16&output=embed';
+      f.title = 'Mapa do SkyFit CT Salim';
+      f.loading = 'lazy';
+      f.referrerPolicy = 'no-referrer-when-downgrade';
+      caixa.appendChild(f);
+    }
+    caixa.hidden = false;
+    e.currentTarget.remove();
+    if (temGsap) ScrollTrigger.refresh();
+  });
+
+  /* ---------- Animações com GSAP ---------- */
+  if (temGsap) {
+    // Item ativo do menu
+    $$('.nav a').forEach((a) => {
+      const s = document.getElementById(a.getAttribute('href').slice(1));
+      if (s) ScrollTrigger.create({ trigger: s, start: 'top 45%', end: 'bottom 45%', onToggle: (self) => a.classList.toggle('ativo', self.isActive) });
+    });
+
+    if (!RM) {
+      ScrollTrigger.batch('.rv', {
+        start: 'top 88%', once: true,
+        onEnter: (lote) => gsap.to(lote, { opacity: 1, y: 0, duration: 0.8, stagger: 0.08, ease: 'power2.out', overwrite: 'auto' })
+      });
+      $$('.luz').forEach((el) => ScrollTrigger.create({ trigger: el, start: 'top 82%', once: true, onEnter: () => acender(el) }));
+      $$('.num').forEach((n) => { if (!n.closest('.vn')) ScrollTrigger.create({ trigger: n, start: 'top 88%', once: true, onEnter: () => n.classList.add('aceso') }); });
+      // O número gigante do voo só acende quando a seção aparece
+      ScrollTrigger.create({
+        trigger: voo, start: 'top 60%', once: true,
+        onEnter: () => { VOO.visto = true; const d = vns[Math.max(0, VOO.parada)]; if (d) $('.num', d).classList.add('aceso'); }
+      });
+      ScrollTrigger.create({
+        trigger: '.estrelas', start: 'top 78%', once: true,
+        onEnter: () => $$('.estrelas li').forEach((li, i) => setTimeout(() => li.classList.add('acesa'), 200 + i * 320))
+      });
+    }
+
+    const mm = gsap.matchMedia();
+    mm.add('(min-width: 901px)', () => {
+      if (RM) return;
+      voo.classList.add('voo--scrub');
+      vooVideo.pause();
+      caixaDo(vooVideo).classList.remove('parado'); // o "Toque para voar" do celular não vale para o voo pela rolagem
+      VOO.ativo = true;
+      tamanhoVoo();
+      const st = ScrollTrigger.create({
+        trigger: voo, start: 'top top', end: () => '+=' + Math.round(window.innerHeight * 4.2),
+        pin: '.voo-palco', pinSpacing: true, anticipatePin: 1, refreshPriority: 1, invalidateOnRefresh: true,
+        onUpdate: (s) => { VOO.alvo = s.progress; },
+        onRefresh: (s) => { tamanhoVoo(); VOO.alvo = s.progress; }
+      });
+      VOO.st = st;
+      const pre = ScrollTrigger.create({ trigger: voo, start: 'top bottom+=120%', once: true, onEnter: carregarVoo });
+      const tick = () => {
+        if (Math.abs(VOO.alvo - VOO.atual) > 0.0002) VOO.atual += (VOO.alvo - VOO.atual) * 0.2;
+        else VOO.atual = VOO.alvo;
+        const q = VOO.atual * (VOO.total - 1);
+        if (q !== VOO.desenhado) { desenharVoo(); VOO.desenhado = q; marcarParada(paradaDoQuadro(q)); barraRota(q); }
+        const dicaOn = VOO.atual <= 0.015;
+        if (dicaOn !== VOO.dica) { VOO.dica = dicaOn; dica.style.opacity = dicaOn ? '1' : '0'; }
+      };
+      gsap.ticker.add(tick);
+      return () => {
+        gsap.ticker.remove(tick);
+        st.kill(); pre.kill();
+        voo.classList.remove('voo--scrub');
+        VOO.ativo = false; VOO.st = null;
+      };
+    });
+  }
+
+  iniciarTopo();
+
+  if (temGsap) {
+    ScrollTrigger.sort();
+    ScrollTrigger.refresh();
+    addEventListener('load', () => { ScrollTrigger.sort(); ScrollTrigger.refresh(); });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => ScrollTrigger.refresh());
+  }
+  window.__animOK = true;
+})();
+</script>
+</body>
+</html>
