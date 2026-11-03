@@ -18,6 +18,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;500;600;700&family=Onest:wght@400;500;600&display=swap">
+<link rel="preload" as="image" href="logo/logo-ct-720.webp" fetchpriority="high">
+<link rel="preload" as="image" href="logo/logo-ct-luz.webp">
 <link rel="preload" as="image" href="img/hero-360.webp" media="(min-width: 901px)" fetchpriority="high">
 <link rel="preload" as="image" imagesrcset="img/salao-v1-m.webp 720w, img/salao-v1.webp 1200w" imagesizes="100vw" media="(max-width: 900px)" fetchpriority="high">
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.min.js"}}</script>
@@ -26,7 +28,13 @@
   var h = document.documentElement, rm = matchMedia('(prefers-reduced-motion: reduce)').matches;
   h.classList.add('js');
   if (rm) h.classList.add('rm');
-  try { if (!rm && !sessionStorage.getItem('ctAbertura')) h.classList.add('abertura'); } catch (e) {}
+  try {
+    if (!rm && !sessionStorage.getItem('ctIntro')) {
+      h.classList.add('abertura');
+      // Rede curta só da abertura: com a internet lenta, o topo aparece direto em vez de uma tela preta
+      setTimeout(function () { if (!window.__introOK) h.classList.remove('abertura'); }, 1800);
+    }
+  } catch (e) {}
   // Rede de segurança: se o script principal não terminar, nada fica escondido
   setTimeout(function () { if (!window.__animOK) h.classList.remove('js', 'abertura'); }, 4000);
 })();
@@ -196,6 +204,17 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .abertura .hero-foto, .abertura .hero-luz, .abertura .hero-txt > *, .abertura .hero-olhar { opacity: 0; }
 html:not(.webgl) [data-tour] { display: none !important; }
 
+/* ============ Abertura: o brasão acende sob a colmeia de LED ============ */
+/* Cobre tudo desde o primeiro quadro (a classe vem do script do head); tocar, rolar ou apertar tecla pula */
+.intro { display: none; }
+.abertura .intro { position: fixed; inset: 0; z-index: 90; display: grid; place-items: center; background: var(--preto); }
+.intro-hex { position: absolute; inset: 0; width: 100%; height: 100%; }
+.intro-marca { position: relative; width: min(54vw, 42vh, 22rem); aspect-ratio: 720 / 757; }
+.intro-marca img { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; }
+.intro-luz { mix-blend-mode: screen; }
+/* Posições medidas na logo (720 × 757): as 3 estrelas do brasão acendem antes do resto */
+.intro-estrela { position: absolute; left: var(--x); top: var(--y); width: var(--t); height: auto; translate: -50% -50%; color: #fff; opacity: 0; filter: drop-shadow(0 0 .3rem rgba(242, 246, 255, .95)) drop-shadow(0 0 .9rem rgba(170, 195, 255, .75)); }
+
 /* ============ 3 estrelas no brasão ============ */
 .estrelas { padding: clamp(3rem, 7vw, 5rem) var(--pad); background: var(--bg2); border-top: 1px solid var(--linha); border-bottom: 1px solid var(--linha); }
 .estrelas ol { display: grid; gap: 1.6rem; }
@@ -323,8 +342,13 @@ html:not(.webgl) [data-tour] { display: none !important; }
 .alem-card.txt h3 { font-size: 1.375rem; }
 .alem-card.txt p { font-size: 1rem; line-height: 1.55; }
 .alem-card.txt .btn { margin-top: 1.1rem; align-self: flex-start; }
+/* No celular a foto do Boali ocupa a linha inteira (são 5 fotos: assim não sobra buraco na grade) */
+.alem-card.largo { grid-column: span 2; aspect-ratio: 16 / 11; }
+.alem-card.largo .janela img { object-position: 50% 58%; }
 @media (min-width: 901px) {
   .alem-grade { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+  .alem-card.largo { grid-column: auto; aspect-ratio: auto; }
+  .alem-card.largo .janela img { object-position: 50% 50%; }
   /* Altura igual na linha; o card de texto pode crescer sem cortar o conteúdo */
   .alem-card { aspect-ratio: auto; min-height: clamp(22rem, 34vw, 32rem); padding: 1.4rem; }
   .alem-card h3 { font-size: 1.375rem; }
@@ -413,6 +437,14 @@ html:not(.webgl) [data-tour] { display: none !important; }
 .tour.carregando .tour-carregando { opacity: 1; }
 @media (min-width: 901px) { .tour-chips { justify-content: center; } }
 
+/* ============ Paralaxe (o JS só liga com GSAP e sem movimento reduzido) ============ */
+/* A foto fica um pouco maior que a janela e corre dentro dela com a rolagem */
+.janela.par > img { top: -9%; height: 118%; will-change: transform; }
+/* Hexágonos de LED ao fundo, como o teto do CT, em camadas que sobem em velocidades diferentes */
+[data-hex] { isolation: isolate; overflow: hidden; overflow: clip; }
+.hexes { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+.hexes svg { position: absolute; left: var(--x); top: var(--y); width: var(--t); overflow: visible; fill: none; stroke: rgba(242, 246, 255, var(--a)); stroke-width: 1.5; will-change: transform; }
+
 /* Movimento reduzido: tudo pronto e parado */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; scroll-behavior: auto !important; }
@@ -436,7 +468,19 @@ html:not(.webgl) [data-tour] { display: none !important; }
   <symbol id="i-baixo" viewBox="0 0 24 24"><path d="M12 4v15m-6-6 6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
   <symbol id="i-lado" viewBox="0 0 24 24"><path d="M4 12h15m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
   <symbol id="i-maos" viewBox="0 0 24 24"><path d="M7 12h10M7 12l3-3M7 12l3 3M17 12l-3-3M17 12l-3 3" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.2" opacity=".5"/></symbol>
+  <symbol id="i-hex" viewBox="0 0 100 86.6"><path d="M25 0h50l25 43.3-25 43.3H25L0 43.3Z" vector-effect="non-scaling-stroke"/></symbol>
 </svg>
+
+<div class="intro" aria-hidden="true">
+  <canvas class="intro-hex"></canvas>
+  <div class="intro-marca">
+    <img class="intro-luz" src="logo/logo-ct-luz.webp" width="720" height="757" alt="">
+    <img class="intro-logo" src="logo/logo-ct-720.webp" width="720" height="757" alt="">
+    <svg class="intro-estrela" viewBox="0 0 24 24" style="--x: 36.8%; --y: 6.9%; --t: 9.9%"><use href="#i-estrela"/></svg>
+    <svg class="intro-estrela" viewBox="0 0 24 24" style="--x: 49.1%; --y: 5.4%; --t: 13.5%"><use href="#i-estrela"/></svg>
+    <svg class="intro-estrela" viewBox="0 0 24 24" style="--x: 61.3%; --y: 6.9%; --t: 10.2%"><use href="#i-estrela"/></svg>
+  </div>
+</div>
 
 <header class="topo">
   <a class="marca" href="#inicio" aria-label="SkyFit CT Salim, voltar ao início">
@@ -577,8 +621,8 @@ html:not(.webgl) [data-tour] { display: none !important; }
   <section class="sec mais" aria-labelledby="mais-t">
     <div class="wrap mais-in">
       <div class="janela luz rv">
-        <img class="luz-base" src="img/vestiario.webp" width="1080" height="1350" loading="lazy" alt="Vestiário com bancada de espelhos iluminada em neon, como um camarim">
-        <img class="luz-camada" src="img/vestiario-luz.webp" width="800" height="1000" loading="lazy" alt="">
+        <img class="luz-base" src="img/cimerian-m.webp" srcset="img/cimerian-m.webp 720w, img/cimerian.webp 1200w" sizes="(min-width: 901px) 30rem, 100vw" width="720" height="960" loading="lazy" alt="Máquinas Cimerian carregadas de anilhas, sob os hexágonos de LED e a luz neon do salão">
+        <img class="luz-camada" src="img/cimerian-luz.webp" width="800" height="1067" loading="lazy" alt="">
       </div>
       <div>
         <p class="rotulo">Estrutura</p>
@@ -595,7 +639,7 @@ html:not(.webgl) [data-tour] { display: none !important; }
     </div>
   </section>
 
-  <section class="sec mod" id="modalidades" aria-labelledby="mod-t">
+  <section class="sec mod" id="modalidades" aria-labelledby="mod-t" data-hex>
     <div class="wrap">
       <p class="rotulo">Modalidades</p>
       <h2 id="mod-t" class="rv">Treinar fofo não está no nosso vocabulário.</h2>
@@ -646,7 +690,7 @@ html:not(.webgl) [data-tour] { display: none !important; }
     </div>
   </section>
 
-  <section class="sec h24" id="aberto-24h" aria-labelledby="h24-t">
+  <section class="sec h24" id="aberto-24h" aria-labelledby="h24-t" data-hex>
     <div class="h24-in">
       <div class="h24-num" aria-hidden="true"><span class="num">24h</span></div>
       <div class="janela vid">
@@ -668,8 +712,11 @@ html:not(.webgl) [data-tour] { display: none !important; }
       <p class="rotulo">Além do treino</p>
       <h2 id="alem-t" class="rv">Tudo no mesmo endereço.</h2>
       <div class="alem-grade">
-        <article class="alem-card txt rv">
-          <span class="num" aria-hidden="true">Boali</span>
+        <article class="alem-card largo rv">
+          <div class="janela luz">
+            <img class="luz-base" src="img/boali-m.webp" srcset="img/boali-m.webp 720w, img/boali.webp 1080w" sizes="(min-width: 901px) 30vw, 100vw" width="720" height="900" loading="lazy" alt="Wrap com chips e dois shakes na bandeja do Boali, com o balcão do restaurante ao fundo">
+            <img class="luz-camada" src="img/boali-luz.webp" width="800" height="1000" loading="lazy" alt="">
+          </div>
           <h3>Restaurante Boali</h3>
           <p>Comida saudável dentro do CT, para comer antes ou depois do treino.</p>
         </article>
@@ -715,7 +762,7 @@ html:not(.webgl) [data-tour] { display: none !important; }
     </div>
   </section>
 
-  <section class="sec aval" id="avaliacoes" aria-labelledby="aval-t">
+  <section class="sec aval" id="avaliacoes" aria-labelledby="aval-t" data-hex>
     <div class="wrap">
       <div class="aval-cab">
         <div class="aval-num" aria-hidden="true"><span class="num">4,8</span></div>
@@ -744,7 +791,7 @@ html:not(.webgl) [data-tour] { display: none !important; }
     </div>
   </section>
 
-  <section class="sec planos" id="planos" aria-labelledby="planos-t">
+  <section class="sec planos" id="planos" aria-labelledby="planos-t" data-hex>
     <div class="wrap">
       <p class="rotulo">Planos</p>
       <h2 id="planos-t" class="rv">Resultado não é opcional.</h2>
@@ -907,9 +954,23 @@ html:not(.webgl) [data-tour] { display: none !important; }
   window.SITE = { lenis, state: {} };
 
   const topo = $('.topo');
-  const folga = () => topo.offsetHeight + 12;
+  // O menu leva ao título da seção (pulando o respiro de cima dela), logo abaixo do topo.
+  // O que vem antes do título na seção (o "4,8", a foto da fachada no celular) entra junto só se for curto
+  function destino(el) {
+    const y = el.getBoundingClientRect().top + window.scrollY;
+    // No computador o voo ocupa a tela inteira e começa no topo da seção
+    if (el.id === 'estrutura' && VOO.ativo) return y;
+    let alvo = y + (parseFloat(getComputedStyle(el).paddingTop) || 0);
+    // Só seções têm título próprio ("Pular para o conteúdo" leva ao <main> e fica no topo)
+    const titulo = el.tagName === 'SECTION' && $('.rotulo, h2', el);
+    if (titulo) {
+      const ty = titulo.getBoundingClientRect().top + window.scrollY;
+      if (ty - alvo > innerHeight * 0.3) alvo = ty;
+    }
+    return alvo - topo.offsetHeight - (DESK() ? 24 : 16);
+  }
   function irPara(el, dur = 1.4) {
-    const y = el.getBoundingClientRect().top + window.scrollY - (el.id === 'estrutura' && DESK() && !RM ? 0 : folga());
+    const y = destino(el);
     if (lenis) lenis.scrollTo(Math.max(0, y), { duration: dur });
     else window.scrollTo({ top: Math.max(0, y), behavior: RM ? 'auto' : 'smooth' });
   }
@@ -1130,37 +1191,115 @@ html:not(.webgl) [data-tour] { display: none !important; }
       .to(cam, { opacity: 0, duration: 0.7, ease: 'power1.inOut' }, 1.05);
   }
 
-  /* ---------- Abertura: o teto acende e a câmera desce até o salão ---------- */
-  let heroEsf = null, heroNaTela = true;
+  /* ---------- Abertura: o brasão acende sob a colmeia de LED ---------- */
+  let heroEsf = null, heroNaTela = true, fase = 'pronto';
   const heroCanvas = $('#ceu-hero');
+  function mostrar3D(h) { h.visivel = heroNaTela && !tour.classList.contains('aberto'); h.giro = 0.6; heroCanvas.classList.add('on'); }
   function textoEntra() {
     // Sem clearProps aqui: com stagger cada item terminaria antes e piscaria (o CSS da abertura ainda o esconde)
-    return gsap.fromTo('.hero-txt > *, .hero-olhar', { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.7, stagger: 0.07, ease: 'power2.out' });
+    return gsap.fromTo('.hero-txt > :not(.hero-logo), .hero-olhar', { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.7, stagger: 0.07, ease: 'power2.out' });
   }
+  // A colmeia do teto do CT em 2D: hexágonos de LED que acendem numa onda saindo do centro
+  function colmeia(cv) {
+    const ctx = cv.getContext('2d'), est = { onda: 0 };
+    let W = 0, H = 0, dpr = 1, R = 0, hexes = [];
+    function medir() {
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      W = innerWidth; H = innerHeight;
+      cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+      R = Math.max(28, Math.min(W, H) / 9);
+      const dx = R * 1.5 * 1.25, dy = R * Math.sqrt(3) * 1.25, cx = W / 2, cy = H / 2, longe = Math.hypot(cx, cy);
+      hexes = [];
+      for (let i = -1; i * dx < W + R; i++) {
+        for (let j = -1; j * dy < H + R; j++) {
+          const x = i * dx + (W % dx) / 2, y = j * dy + (i & 1 ? dy / 2 : 0);
+          hexes.push({ x, y, d: Math.hypot(x - cx, y - cy) / longe });
+        }
+      }
+    }
+    function hexagono(x, y, r) {
+      ctx.moveTo(x + r, y);
+      for (let k = 1; k < 6; k++) ctx.lineTo(x + r * Math.cos(k * Math.PI / 3), y + r * Math.sin(k * Math.PI / 3));
+      ctx.closePath();
+    }
+    function desenhar() {
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.clearRect(0, 0, W, H);
+      const frente = est.onda * 1.35;
+      // Dois traços por hexágono: um largo e fraco (o brilho) e um fino (o tubo de LED)
+      [[R * 0.09, 0.14], [1.6, 1]].forEach(([larg, forca]) => {
+        ctx.lineWidth = larg;
+        hexes.forEach((h) => {
+          const pico = Math.max(0, 1 - Math.abs(frente - h.d) / 0.16);
+          const aceso = frente > h.d ? 0.3 : 0;
+          const perto = Math.min(1, 0.25 + h.d * 2.2); // os do centro ficam fracos para o brasão aparecer
+          const a = Math.max(pico, aceso) * perto * forca;
+          if (a < 0.01) return;
+          ctx.strokeStyle = 'rgba(242, 246, 255, ' + a.toFixed(3) + ')';
+          ctx.beginPath(); hexagono(h.x, h.y, R * 0.94); ctx.stroke();
+        });
+      });
+    }
+    medir();
+    addEventListener('resize', medir);
+    gsap.ticker.add(desenhar);
+    return { est, parar: () => { gsap.ticker.remove(desenhar); removeEventListener('resize', medir); } };
+  }
+  const PULAR = ['wheel', 'touchstart', 'keydown', 'pointerdown'];
+  let pularAbertura = null, pararColmeia = null, pulando = false;
   function terminarAbertura() {
     html.classList.remove('abertura');
-    try { sessionStorage.setItem('ctAbertura', '1'); } catch (e) { /* aba anônima */ }
+    try { sessionStorage.setItem('ctIntro', '1'); } catch (e) { /* aba anônima */ }
     gsap.set('.hero-foto, .hero-luz, .hero-txt > *, .hero-olhar', { clearProps: 'opacity,transform' });
+    if (pularAbertura) PULAR.forEach((ev) => removeEventListener(ev, pularAbertura));
+    if (pararColmeia) { pararColmeia(); pararColmeia = null; }
+    fase = 'pronto';
+    if (heroEsf && !heroCanvas.classList.contains('on')) mostrar3D(heroEsf);
   }
-  function aberturaFoto(desk) {
-    const foto = $('.hero-foto'), luz = $('.hero-luz');
+  function abertura() {
+    const marca = $('.intro-marca'), brilho = $('.intro-luz'), logo = $('.intro-logo'), estrelas = $$('.intro-estrela');
+    const heroLogo = $('.hero-logo'), foto = $('.hero-foto'), luz = $('.hero-luz');
+    const hex = colmeia($('.intro-hex'));
+    pararColmeia = hex.parar;
+    // O brasão da abertura voa até o lugar do brasão do topo; se o topo não estiver na tela, só apaga
+    let alvo = null;
+    const rota = () => {
+      if (alvo) return alvo;
+      const a = marca.getBoundingClientRect(), b = heroLogo.getBoundingClientRect();
+      const naTela = b.bottom > 0 && b.top < innerHeight && b.width > 0;
+      alvo = naTela
+        ? { x: b.left + b.width / 2 - (a.left + a.width / 2), y: b.top + b.height / 2 - (a.top + a.height / 2), s: b.width / a.width, o: 1 }
+        : { x: 0, y: 0, s: 0.85, o: 0 };
+      return alvo;
+    };
+    gsap.set(estrelas, { scale: 0.4 });
     const tl = gsap.timeline({ onComplete: terminarAbertura });
-    tl.fromTo(luz, { opacity: 0 }, { opacity: 1, duration: 0.6, ease: 'power1.out' })
-      .fromTo(foto, { opacity: 0 }, { opacity: 1, duration: 1.0, ease: 'power2.inOut' }, 0.45)
-      .to(luz, { opacity: 0, duration: 0.8 }, 1.2)
-      .fromTo([foto, luz], { scale: desk ? 1.12 : 1.45, transformOrigin: desk ? '50% 30%' : '50% 0%' }, { scale: 1, duration: 2.0, ease: 'power2.inOut' }, 0.1)
-      .add(textoEntra(), 1.5);
-    return tl;
-  }
-  function abertura3D(h) {
-    h.v.luz = 0; h.v.lat = 56; h.giro = 0;
-    heroCanvas.style.transition = 'none';
-    heroCanvas.classList.add('on');
-    gsap.set('.hero-foto', { opacity: 1 });
-    const tl = gsap.timeline({ onComplete: () => { heroCanvas.style.transition = ''; h.giro = 0.6; terminarAbertura(); } });
-    tl.to(h.v, { luz: 1, duration: 1.3, ease: 'power1.inOut' })
-      .to(h.v, { lat: 2, duration: 1.15, ease: 'power2.inOut' }, 0.85)
-      .add(textoEntra(), 1.55);
+    tl.to(hex.est, { onda: 1, duration: 1.4, ease: 'power1.inOut' }, 0);
+    estrelas.forEach((e, i) => tl.to(e, {
+      keyframes: [{ opacity: 0.9, scale: 0.8, duration: 0.07 }, { opacity: 0.2, duration: 0.07 }, { opacity: 1, scale: 1, duration: 0.24, ease: 'power2.out' }]
+    }, 0.3 + i * 0.15));
+    // A foto do topo precisa ter chegado para acender: se ainda não chegou, o brasão espera (no máximo 2,5 s)
+    const fotos = [$('img', foto), $('img', luz)];
+    tl.add(() => {
+      if (pulando || fotos.every((i) => i.complete && i.naturalWidth)) return;
+      tl.pause();
+      Promise.all(fotos.map(pronta)).then(() => tl.resume());
+    }, 1.6);
+    tl.fromTo(brilho, { opacity: 0 }, { opacity: 1, duration: 0.6, ease: 'power1.out' }, 0.6)
+      .fromTo(logo, { opacity: 0 }, { opacity: 1, duration: 0.7, ease: 'power2.inOut' }, 0.95)
+      .to(estrelas, { opacity: 0, duration: 0.4, stagger: 0.05 }, 1.4)
+      .to(brilho, { opacity: 0, duration: 0.5 }, 1.6)
+      // O fundo preto se abre e o salão acende pelas luzes
+      .to('.intro', { backgroundColor: 'rgba(5, 7, 13, 0)', duration: 0.8, ease: 'power1.inOut' }, 1.65)
+      .to('.intro-hex', { opacity: 0, duration: 0.6 }, 1.65)
+      .fromTo(luz, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: 'power1.out' }, 1.65)
+      .fromTo(foto, { opacity: 0 }, { opacity: 1, duration: 0.9, ease: 'power2.inOut' }, 1.9)
+      .to(luz, { opacity: 0, duration: 0.7, ease: 'power1.inOut' }, 2.45)
+      .to(marca, { x: () => rota().x, y: () => rota().y, scale: () => rota().s, opacity: () => rota().o, duration: 0.9, ease: 'power3.inOut' }, 1.7)
+      .set(heroLogo, { opacity: 1 }, 2.6)
+      .set(marca, { opacity: 0 }, 2.6)
+      .add(textoEntra(), 2.25);
+    // No fim, terminarAbertura liga o 3D (se já chegou) por cima da foto, no mesmo ponto de vista
     return tl;
   }
   function criarHero3D() {
@@ -1168,11 +1307,12 @@ html:not(.webgl) [data-tour] { display: none !important; }
     return carregarModulo().then(async (m) => {
       const h = new m.Esfera(heroCanvas, { fov: 66, latMin: -28, latMax: 66, giro: 0, cursor: matchMedia('(pointer: fine)').matches });
       h.v.lon = 270; h.v.lat = 2;
-      if (html.classList.contains('abertura')) h.v.luz = 0; // a abertura acende o teto a partir do escuro
       await h.usar('img/360-salao-m.jpg');
+      // Durante a abertura o 3D não desenha (a primeira imagem, a mais pesada, ficaria no meio da animação)
+      h.visivel = fase === 'pronto';
       h.ligar();
       heroEsf = h; window.SITE.state.hero = h;
-      if ('IntersectionObserver' in window) new IntersectionObserver((e) => { heroNaTela = e[0].isIntersecting; h.visivel = heroNaTela && !tour.classList.contains('aberto'); }).observe($('.hero'));
+      if ('IntersectionObserver' in window) new IntersectionObserver((e) => { heroNaTela = e[0].isIntersecting; h.visivel = heroNaTela && fase === 'pronto' && !tour.classList.contains('aberto'); }).observe($('.hero'));
       // Depois que tudo carregou, troca pela panorâmica de 4096 px (mais nítida em telas grandes)
       const nitida = () => h.usar('img/360-salao.jpg').then(() => h.limpar(['img/360-salao.jpg'])).catch(() => {});
       addEventListener('load', () => setTimeout(() => ('requestIdleCallback' in window ? requestIdleCallback(nitida) : nitida()), 1500), { once: true });
@@ -1181,31 +1321,30 @@ html:not(.webgl) [data-tour] { display: none !important; }
     }).catch(() => null);
   }
   function iniciarTopo() {
-    const desk = DESK();
     const abrir = html.classList.contains('abertura') && temGsap;
-    const promessa3D = desk ? criarHero3D() : Promise.resolve(null);
-    if (!abrir) {
-      promessa3D.then((h) => { if (h) { h.giro = 0.6; heroCanvas.classList.add('on'); } });
-      return;
-    }
+    if (abrir) { fase = 'intro'; window.__introOK = true; }
+    const promessa3D = DESK() ? criarHero3D() : Promise.resolve(null);
+    // Durante a abertura o 3D espera: ele entra quando a abertura termina
+    promessa3D.then((h) => { if (h && fase === 'pronto') mostrar3D(h); });
+    if (!abrir) return;
     // Rolar, tocar ou apertar uma tecla pula a abertura (mesmo antes de ela começar)
-    let tl = null, decidido = false, querPular = false;
-    const pular = () => { if (tl) tl.progress(1); else querPular = true; };
-    ['wheel', 'touchstart', 'keydown', 'pointerdown'].forEach((ev) => addEventListener(ev, pular, { passive: true, once: true }));
-    const decidir = (h) => {
-      if (decidido) return;
-      decidido = true;
-      tl = h ? abertura3D(h) : aberturaFoto(desk);
-      if (querPular) tl.progress(1);
+    let tl = null;
+    pularAbertura = (e) => {
+      // No toque, o clique chega depois que a abertura sumiu: ele não pode acionar o botão que estava embaixo do dedo
+      if (e.type === 'touchstart' || (e.pointerType && e.pointerType !== 'mouse')) {
+        const engole = (c) => { c.preventDefault(); c.stopPropagation(); };
+        addEventListener('click', engole, { capture: true, once: true });
+        setTimeout(() => removeEventListener('click', engole, true), 700);
+      }
+      pulando = true;
+      if (tl) tl.progress(1); else terminarAbertura();
     };
-    if (!desk) { decidir(null); return; }
-    promessa3D.then((h) => {
-      if (!h) { decidir(null); return; }
-      if (!decidido) { decidir(h); return; }
-      // A foto abriu antes: o 3D entra suave por cima quando ela terminar
-      tl.then(() => { h.v.luz = 1; h.giro = 0.6; heroCanvas.classList.add('on'); });
+    PULAR.forEach((ev) => addEventListener(ev, pularAbertura, { passive: true }));
+    // Espera o brasão chegar (no máximo 0,7 s) para ele não acender pela metade
+    const imgs = [$('.intro-logo'), $('.intro-luz')];
+    Promise.race([Promise.all(imgs.map(pronta)), new Promise((ok) => setTimeout(ok, 700))]).then(() => {
+      if (!pulando) tl = abertura();
     });
-    setTimeout(() => decidir(null), 1200);
   }
 
   /* ---------- Tour 360° ---------- */
@@ -1365,6 +1504,48 @@ html:not(.webgl) [data-tour] { display: none !important; }
         voo.classList.remove('voo--scrub');
         VOO.ativo = false; VOO.st = null;
       };
+    });
+  }
+
+  /* ---------- Paralaxe: cada coisa corre numa velocidade, como planos de profundidade ---------- */
+  if (temGsap && !RM) {
+    const aoPassar = (trigger) => ({ trigger, start: 'top bottom', end: 'bottom top', scrub: true, invalidateOnRefresh: true });
+    // Topo: a foto desce devagar e o texto sobe mais rápido
+    const topoST = { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true };
+    gsap.to('.hero-midia', { yPercent: 18, ease: 'none', scrollTrigger: topoST });
+    gsap.to('.hero-txt', { yPercent: -10, ease: 'none', scrollTrigger: topoST });
+    // Fotos: um pouco maiores que a janela, correm dentro dela (a camada de luz vai junto)
+    $$('.janela.luz').forEach((j) => {
+      j.classList.add('par');
+      gsap.fromTo($$(':scope > img', j), { yPercent: () => (DESK() ? -7 : -5) }, { yPercent: () => (DESK() ? 7 : 5), ease: 'none', scrollTrigger: aoPassar(j) });
+    });
+    // Números de LED gigantes: ficam mais ao fundo (sobem mais devagar) e assentam no lugar perto do topo.
+    // Andam só para cima, dentro do respiro da seção, sem cobrir o texto; e o menu os encontra enquadrados
+    $$('.h24-num, .aval-num').forEach((n) => {
+      const sec = n.closest('.sec');
+      gsap.fromTo(n, { y: () => -0.75 * (parseFloat(getComputedStyle(sec).paddingTop) || 0) }, {
+        y: 0, ease: 'none',
+        scrollTrigger: { trigger: n.parentElement, start: 'top bottom', end: 'top 25%', scrub: true, invalidateOnRefresh: true }
+      });
+    });
+    // Hexágonos de LED ao fundo, como o teto do CT, em profundidades diferentes (x, y, tamanho, brilho, velocidade)
+    const HEX = [[6, 8, 9, 0.2, 90], [86, 14, 14, 0.13, 160], [72, 62, 6, 0.24, 60], [12, 72, 12, 0.12, 130], [44, 30, 4.5, 0.18, 210], [93, 86, 8, 0.18, 110]];
+    const NS = 'http://www.w3.org/2000/svg';
+    $$('[data-hex]').forEach((sec, k) => {
+      const caixa = document.createElement('div');
+      caixa.className = 'hexes';
+      caixa.setAttribute('aria-hidden', 'true');
+      HEX.forEach(([x, y, t, a, v], i) => {
+        const svg = document.createElementNS(NS, 'svg'), use = document.createElementNS(NS, 'use');
+        svg.setAttribute('viewBox', '0 0 100 86.6');
+        use.setAttribute('href', '#i-hex');
+        svg.appendChild(use);
+        // Seções alternadas espelham o desenho para não repetir
+        svg.style.cssText = '--x:' + (k % 2 ? 100 - x : x) + '%;--y:' + y + '%;--t:max(' + (t * 0.45).toFixed(2) + 'rem, ' + t + 'vw);--a:' + a;
+        caixa.appendChild(svg);
+        gsap.fromTo(svg, { y: v, rotation: i % 2 ? -10 : 10 }, { y: -v, rotation: 0, ease: 'none', scrollTrigger: aoPassar(sec) });
+      });
+      sec.prepend(caixa);
     });
   }
 
