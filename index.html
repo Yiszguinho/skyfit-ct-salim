@@ -211,7 +211,6 @@ html:not(.webgl) [data-tour] { display: none !important; }
 .intro-hex { position: absolute; inset: 0; width: 100%; height: 100%; }
 .intro-marca { position: relative; width: min(54vw, 42vh, 22rem); aspect-ratio: 720 / 757; }
 .intro-marca img { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; }
-.intro-luz { mix-blend-mode: screen; }
 /* Posições medidas na logo (720 × 757): as 3 estrelas do brasão acendem antes do resto */
 .intro-estrela { position: absolute; left: var(--x); top: var(--y); width: var(--t); height: auto; translate: -50% -50%; color: #fff; opacity: 0; filter: drop-shadow(0 0 .3rem rgba(242, 246, 255, .95)) drop-shadow(0 0 .9rem rgba(170, 195, 255, .75)); }
 
@@ -344,11 +343,11 @@ html:not(.webgl) [data-tour] { display: none !important; }
 .alem-card.txt .btn { margin-top: 1.1rem; align-self: flex-start; }
 /* No celular a foto do Boali ocupa a linha inteira (são 5 fotos: assim não sobra buraco na grade) */
 .alem-card.largo { grid-column: span 2; aspect-ratio: 16 / 11; }
-.alem-card.largo .janela img { object-position: 50% 58%; }
+.alem-card.largo .janela img { object-position: 50% 38%; }
 @media (min-width: 901px) {
   .alem-grade { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
   .alem-card.largo { grid-column: auto; aspect-ratio: auto; }
-  .alem-card.largo .janela img { object-position: 50% 50%; }
+  .alem-card.largo .janela img { object-position: 50% 30%; }
   /* Altura igual na linha; o card de texto pode crescer sem cortar o conteúdo */
   .alem-card { aspect-ratio: auto; min-height: clamp(22rem, 34vw, 32rem); padding: 1.4rem; }
   .alem-card h3 { font-size: 1.375rem; }
@@ -621,8 +620,8 @@ html:not(.webgl) [data-tour] { display: none !important; }
   <section class="sec mais" aria-labelledby="mais-t">
     <div class="wrap mais-in">
       <div class="janela luz rv">
-        <img class="luz-base" src="img/cimerian-m.webp" srcset="img/cimerian-m.webp 720w, img/cimerian.webp 1200w" sizes="(min-width: 901px) 30rem, 100vw" width="720" height="960" loading="lazy" alt="Máquinas Cimerian carregadas de anilhas, sob os hexágonos de LED e a luz neon do salão">
-        <img class="luz-camada" src="img/cimerian-luz.webp" width="800" height="1067" loading="lazy" alt="">
+        <img class="luz-base" src="img/maquinas-corredor-m.webp" srcset="img/maquinas-corredor-m.webp 720w, img/maquinas-corredor.webp 1200w" sizes="(min-width: 901px) 30rem, 100vw" width="720" height="900" loading="lazy" alt="Corredor de máquinas vermelhas e pretas Cimerian no salão do CT, sob as linhas de LED do teto">
+        <img class="luz-camada" src="img/maquinas-corredor-luz.webp" width="800" height="1000" loading="lazy" alt="">
       </div>
       <div>
         <p class="rotulo">Estrutura</p>
@@ -714,8 +713,8 @@ html:not(.webgl) [data-tour] { display: none !important; }
       <div class="alem-grade">
         <article class="alem-card largo rv">
           <div class="janela luz">
-            <img class="luz-base" src="img/boali-m.webp" srcset="img/boali-m.webp 720w, img/boali.webp 1080w" sizes="(min-width: 901px) 30vw, 100vw" width="720" height="900" loading="lazy" alt="Wrap com chips e dois shakes na bandeja do Boali, com o balcão do restaurante ao fundo">
-            <img class="luz-camada" src="img/boali-luz.webp" width="800" height="1000" loading="lazy" alt="">
+            <img class="luz-base" src="img/boali-m.webp" srcset="img/boali-m.webp 720w, img/boali.webp 1070w" sizes="(min-width: 901px) 30vw, 100vw" width="720" height="787" loading="lazy" alt="Balcão do restaurante Boali dentro do CT, com os painéis do cardápio e mesas de madeira">
+            <img class="luz-camada" src="img/boali-luz.webp" width="800" height="875" loading="lazy" alt="">
           </div>
           <h3>Restaurante Boali</h3>
           <p>Comida saudável dentro do CT, para comer antes ou depois do treino.</p>
